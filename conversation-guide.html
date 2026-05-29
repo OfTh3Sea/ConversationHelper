@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Conversation Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --sand:#f5f0e8;--warm:#fdfaf5;--ink:#1c1a14;--ink2:#4a4535;--ink3:#8a8070;
+  --border:#e0d8c8;--border2:#cdc4b0;
+  --green:#2d6a4f;--green-lt:#d8f3dc;
+  --orange:#e07b39;--orange-lt:#fde8d8;
+  --blue:#2a5fa5;--blue-lt:#ddeeff;
+  --purple:#6b3fa0;--purple-lt:#ede0ff;
+  --warn:#c0392b;--warn-lt:#fde8e8;
+  --gold:#b8860b;--gold-lt:#fdf3d0;
+  --r:16px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{height:100%;}
+body{font-family:'Source Sans 3',sans-serif;background:var(--sand);color:var(--ink);line-height:1.6;display:flex;flex-direction:column;}
+
+/* ── HEADER ── */
+.hdr{background:var(--warm);border-bottom:2px solid var(--border);padding:.9rem 1.4rem;position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;gap:.8rem;flex-wrap:wrap;}
+.hdr-brand h1{font-family:'Playfair Display',serif;font-size:clamp(1rem,3vw,1.4rem);font-weight:700;line-height:1;}
+.hdr-brand p{font-size:.68rem;color:var(--ink3);margin-top:.1rem;letter-spacing:.04em;}
+
+/* ── LAYOUT ── */
+.body{display:flex;flex:1;min-height:0;overflow:hidden;}
+.sb{width:272px;flex-shrink:0;background:var(--warm);border-right:1.5px solid var(--border);overflow-y:auto;height:calc(100vh - 62px);position:sticky;top:62px;display:flex;flex-direction:column;}
+.main{flex:1;overflow-y:auto;padding:2rem 1.5rem 5rem;background:var(--sand);}
+
+/* ── SIDEBAR ── */
+.sb-top{padding:.7rem .8rem .5rem;border-bottom:1px solid var(--border);}
+.srch{width:100%;padding:.45rem .85rem;border:1.5px solid var(--border);border-radius:999px;font-family:'Source Sans 3',sans-serif;font-size:.8rem;background:var(--sand);color:var(--ink);outline:none;transition:border-color .2s;}
+.srch:focus{border-color:var(--green);}
+.srch::placeholder{color:var(--ink3);}
+.sb-list{flex:1;overflow-y:auto;padding-bottom:1rem;}
+.cat-lbl{font-size:.58rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);padding:.6rem .9rem .2rem;}
+.sitem{display:flex;align-items:flex-start;gap:.55rem;padding:.52rem .9rem;cursor:pointer;border-left:3px solid transparent;transition:all .15s;}
+.sitem:hover{background:var(--sand);}
+.sitem.on{background:var(--sand);border-left-color:var(--green);}
+.sitem-icon{font-size:.95rem;flex-shrink:0;margin-top:.1rem;}
+.sitem-text{flex:1;}
+.sitem-title{font-size:.8rem;font-weight:600;color:var(--ink2);line-height:1.35;}
+.sitem.on .sitem-title{color:var(--green);font-weight:700;}
+.sitem-sub{font-size:.68rem;color:var(--ink3);margin-top:.05rem;}
+.norec{text-align:center;padding:2.5rem 1rem;color:var(--ink3);font-size:.85rem;font-style:italic;}
+
+/* ── WELCOME ── */
+.welcome{max-width:660px;margin:0 auto;}
+.w-hero{text-align:center;padding:2.5rem 1rem 2rem;}
+.w-ey{font-size:.68rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ink3);margin-bottom:.6rem;}
+.w-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3rem);font-weight:700;line-height:1.1;margin-bottom:.85rem;}
+.w-title em{font-style:italic;color:var(--green);}
+.w-desc{font-size:.96rem;color:var(--ink2);line-height:1.75;max-width:480px;margin:0 auto 1.8rem;font-family:'Source Serif 4',serif;}
+.w-stats{display:flex;gap:.65rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.8rem;}
+.w-stat{background:var(--warm);border:1.5px solid var(--border);border-radius:14px;padding:.7rem 1.1rem;text-align:center;min-width:100px;}
+.w-stat-v{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:700;line-height:1;}
+.w-stat-l{font-size:.62rem;color:var(--ink3);text-transform:uppercase;letter-spacing:.08em;margin-top:.12rem;}
+.w-how{background:var(--warm);border:1.5px solid var(--border);border-radius:var(--r);padding:1.2rem 1.4rem;margin-bottom:1.5rem;display:flex;flex-direction:column;gap:.7rem;}
+.w-how-title{font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);}
+.w-how-steps{display:flex;flex-direction:column;gap:.5rem;}
+.w-how-step{display:flex;align-items:flex-start;gap:.75rem;font-size:.88rem;color:var(--ink2);line-height:1.55;}
+.w-how-num{width:22px;height:22px;border-radius:50%;background:var(--green);color:white;font-size:.7rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.1rem;}
+.w-cta{background:var(--green);color:white;border:none;border-radius:999px;font-family:'Source Sans 3',sans-serif;font-size:.92rem;font-weight:700;padding:.75rem 2.2rem;cursor:pointer;transition:all .2s;display:block;margin:0 auto;}
+.w-cta:active{opacity:.85;}
+
+/* ── GUIDE ── */
+.guide{max-width:720px;}
+.g-bc{font-size:.7rem;color:var(--ink3);margin-bottom:.5rem;display:flex;align-items:center;gap:.3rem;flex-wrap:wrap;background:transparent;}
+.g-title{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,4vw,2.1rem);font-weight:700;line-height:1.2;margin-bottom:.5rem;color:var(--ink);}
+.g-tags{display:flex;gap:.35rem;flex-wrap:wrap;margin-bottom:.9rem;}
+.g-tag{display:inline-flex;align-items:center;padding:.2rem .6rem;border-radius:999px;font-size:.7rem;font-weight:600;}
+.g-tag.cat{background:var(--gold-lt);color:var(--gold);border:1px solid #e8d090;}
+.g-tag.skill{background:var(--green-lt);color:var(--green);border:1px solid #a8d8b8;}
+.g-intro{font-family:'Source Serif 4',serif;font-size:.97rem;color:var(--ink2);line-height:1.75;padding:1rem 1.2rem;background:var(--warm);border-left:4px solid var(--green);border-radius:0 var(--r) var(--r) 0;margin-bottom:1.5rem;}
+
+/* ── AGE TABS ── */
+.age-tabs{display:flex;gap:0;margin-bottom:1.4rem;border:1.5px solid var(--border);border-radius:var(--r);overflow:hidden;background:var(--warm);}
+.age-tab{flex:1;padding:.6rem .5rem;border:none;font-family:'Source Sans 3',sans-serif;font-size:.78rem;font-weight:600;cursor:pointer;background:transparent;color:var(--ink3);transition:all .18s;border-right:1px solid var(--border);text-align:center;line-height:1.3;}
+.age-tab:last-child{border-right:none;}
+.age-tab.on{background:var(--green);color:white;}
+.age-tab .age-tab-label{display:block;font-size:.65rem;font-weight:400;opacity:.8;margin-top:.1rem;}
+
+/* ── GUIDE CONTENT ── */
+.g-sec{margin-bottom:1.5rem;}
+.g-sec-lbl{font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);margin-bottom:.65rem;display:flex;align-items:center;gap:.4rem;}
+.g-sec-lbl::after{content:'';flex:1;height:1px;background:var(--border);}
+.steps{display:flex;flex-direction:column;gap:.6rem;}
+.step{display:flex;gap:.85rem;background:var(--warm);border:1.5px solid var(--border);border-radius:var(--r);padding:.95rem;}
+.step-n{width:24px;height:24px;border-radius:50%;background:var(--green);color:white;font-size:.72rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.05rem;}
+.step-body{flex:1;}
+.step-t{font-weight:700;font-size:.88rem;color:var(--ink);margin-bottom:.2rem;}
+.step-d{font-size:.84rem;color:var(--ink2);line-height:1.6;}
+.step-tip{font-size:.74rem;color:var(--green);background:var(--green-lt);border-radius:7px;padding:.3rem .6rem;margin-top:.4rem;display:inline-block;}
+.scripts{display:flex;flex-direction:column;gap:.6rem;}
+.spair{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;}
+@media(max-width:540px){.spair{grid-template-columns:1fr;}}
+.sbox{border-radius:14px;padding:.85rem;}
+.sbox.say{background:var(--green-lt);border:1.5px solid #a8d8b8;}
+.sbox.dont{background:var(--warn-lt);border:1.5px solid #f0b8b8;}
+.s-lbl{font-size:.6rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.4rem;}
+.s-lbl.sy{color:var(--green);}
+.s-lbl.dn{color:var(--warn);}
+.s-txt{font-family:'Source Serif 4',serif;font-size:.85rem;line-height:1.6;color:var(--ink);}
+.wlist{display:flex;flex-direction:column;gap:.4rem;}
+.wi{display:flex;gap:.6rem;font-size:.84rem;color:var(--ink2);line-height:1.6;align-items:flex-start;}
+.ref-card,.ck-card{background:var(--warm);border:1.5px solid var(--border);border-radius:var(--r);padding:1.1rem 1.2rem;margin-bottom:.85rem;}
+.ref-title,.ck-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--ink);margin-bottom:.65rem;}
+.ref-qs{display:flex;flex-direction:column;gap:.5rem;}
+.ref-q{font-size:.86rem;color:var(--ink2);padding-left:.85rem;border-left:2px solid var(--green);line-height:1.6;}
+.ck-sub{font-size:.78rem;color:var(--ink3);margin-bottom:.8rem;}
+.ck-list{display:flex;flex-direction:column;gap:.38rem;}
+.ci{display:flex;align-items:center;gap:.6rem;padding:.5rem .7rem;border:1.5px solid var(--border);border-radius:9px;cursor:pointer;background:var(--sand);transition:all .18s;}
+.ci:hover{border-color:var(--green);}
+.ci.chk{background:var(--green-lt);border-color:var(--green);}
+.ci-box{width:17px;height:17px;border-radius:4px;border:2px solid var(--border2);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.68rem;transition:all .15s;}
+.ci.chk .ci-box{background:var(--green);border-color:var(--green);color:white;}
+.ci-txt{font-size:.84rem;color:var(--ink2);line-height:1.4;flex:1;}
+.ci.chk .ci-txt{color:var(--ink);}
+.sc-result{margin-top:.85rem;padding:.75rem .9rem;border-radius:9px;font-size:.83rem;line-height:1.6;display:none;}
+.sc-result.show{display:block;}
+.sc-result.good{background:var(--green-lt);color:var(--green);border:1px solid #a8d8b8;}
+.sc-result.ok{background:var(--gold-lt);color:var(--gold);border:1px solid #e8d090;}
+.sc-result.low{background:var(--warn-lt);color:var(--warn);border:1px solid #f0b8b8;}
+
+/* ── NO CONTENT NOTICE ── */
+.no-age{background:var(--warm);border:1.5px solid var(--border);border-radius:var(--r);padding:1.5rem;text-align:center;color:var(--ink3);font-size:.88rem;font-style:italic;}
+
+/* ── MOBILE ── */
+@media(max-width:720px){
+  .body{flex-direction:column;}
+  .sb{width:100%;height:auto;position:static;max-height:220px;border-right:none;border-bottom:1.5px solid var(--border);}
+  .main{padding:1.1rem .9rem 4rem;}
+  .age-tab .age-tab-label{display:none;}
+}
+</style>
+</head>
+<body>
+<div class="hdr">
+  <div class="hdr-brand">
+    <h1>The Conversation Guide</h1>
+    <p>How to have the conversations that matter most</p>
+  </div>
+</div>
+<div class="body">
+  <aside class="sb">
+    <div class="sb-top">
+      <input class="srch" type="text" placeholder="Search conversations…" oninput="filterList(this.value)" id="srch">
+    </div>
+    <div class="sb-list" id="sblist"></div>
+  </aside>
+  <main class="main" id="main"><div id="content"></div></main>
+</div>
+<script>
+// ══════════════════════════════════════════════════════
+// UNIFIED CONVERSATION DATA
+// Each topic has age bands: '3-6', '7-12', '13-17', 'adults'
+// Missing bands simply omit — the tab won't show
+// ══════════════════════════════════════════════════════
+const CONVS = [
+
+// ── FRIENDSHIP ─────────────────────────────────────
+{id:'f1',cat:'Friendship',icon:'🤝',skill:'Empathy',
+title:'When a friend is left out',
+intro:'Exclusion is one of the most painful social experiences at any age. This guide helps you recognize when someone is left out and find the courage to act — even when it feels risky.',
+ages:{
+'3-6':{
+steps:[{t:'Notice',d:"Ask yourself: 'Do I see someone who looks sad or alone?' Help name what you see.",tip:'Young children often miss social cues — gently point it out.'},
+{t:'Walk over together',d:"'Let's go say hi and ask them to play.' Hold their hand if needed.",tip:'Model the behavior WITH them, not just tell them to.'},
+{t:'Use simple words',d:"'Do you want to play?' Three words are enough.",tip:'Short and clear works best at this age.'}],
+say:[{s:"'Can you come play with us?'",d:"'You can't play, you're not in our group.'"},{s:"'Everyone can be my friend.'",d:"'We already have enough friends.'"}],
+watch:['Child turns away — redirect gently','Excluding becomes a pattern — talk to a caregiver'],
+reflect:['How do you think that child felt when they were left out?','Has anyone ever left YOU out? What did that feel like?'],
+check:['I noticed someone was alone','I said something kind to include them','I told a grown-up if it kept happening']},
+'7-12':{
+steps:[{t:'Recognize the dynamics',d:'Is this accidental or on purpose? A one-time thing or a pattern?',tip:'Teaching pattern recognition is key at this age.'},
+{t:'Choose to act',d:"'Including someone when your group might push back takes real courage.'",tip:"Give them agency — forced empathy rarely sticks."},
+{t:'Invite casually',d:"'Hey, want to hang with us?' — simple, no big drama.",tip:'Kids this age are very aware of social awkwardness. Keep it low-key.'},
+{t:'If others push back',d:"You can say: 'They're cool, give them a chance.'",tip:'One kind person can change everything for an excluded child.'}],
+say:[{s:"'Hey, come sit with us.'",d:"'Nobody likes them anyway.'"},{s:"'I noticed you were alone — are you okay?'",d:"'Why don't you have any friends?'"}],
+watch:['Clique dynamics forming — exclusion becoming a power tool','Child feels pressure NOT to include — address peer pressure separately'],
+reflect:['What stopped you from reaching out? What would have made it easier?','What kind of friend do YOU want to be?'],
+check:['I noticed who was left out and why','I chose to act even when it was uncomfortable','I did not join in when others excluded someone','I checked in privately if someone seemed hurt']},
+'13-17':{
+steps:[{t:'Audit your own role',d:'Have I been part of excluding someone — actively or passively? Passive exclusion is still exclusion.',tip:'Teens need to own their role in social dynamics.'},
+{t:'Understand the stakes',d:"'Social exclusion at your age has real mental health consequences. It's not just drama.'",tip:'Name the weight without lecturing.'},
+{t:'Take a specific action',d:"'Including someone in a group text, defending them, or sitting with them — small acts matter enormously.'",tip:'Concrete specific actions beat vague advice.'},
+{t:'Have the harder conversation',d:"If a friend is leading the exclusion: 'The way we've been treating [name] isn't okay and it's bothering me.'",tip:'The harder, braver version — for those ready for it.'}],
+say:[{s:"'I've been thinking about how we've treated [name] and I don't feel good about it.'",d:"'It's not a big deal, they're just sensitive.'"},{s:"'I'm going to invite them. You can come or not.'",d:"'If you invite them I won't come.'"}],
+watch:["Teen is the one being excluded — this applies to self-advocacy too",'Cyberbullying — exclusion online is equally isolating'],
+reflect:['What does it cost you to include someone? What does it cost them if you do not?','Is there a version of yourself you are proud of in this situation?'],
+check:['I acknowledged my role, even if it was just silence','I took a concrete action','I talked to the person doing the excluding if I could','I followed up to make sure it actually got better']},
+'adults':{
+steps:[{t:'Recognize it for what it is',d:"Social exclusion between adults can be subtle — leaving someone off a group chat, not inviting them to events. Name it accurately.",tip:'Naming it accurately is the first step to addressing it.'},
+{t:'Decide whether to act directly or indirectly',d:'Direct: invite the person in. Indirect: speak to whoever is organizing the exclusion. Both matter.',tip:'Even one person acting changes the dynamic significantly.'},
+{t:"If you've been complicit, own it",d:"'I've been going along with something that isn't fair to [person] and I want to change that.'",tip:'Brief, honest, without excessive self-flagellation.'},
+{t:'Address the culture if it is a pattern',d:"If your friend group or workplace consistently excludes certain people, that's a culture — and cultures change when individuals start naming them.",tip:'Culture change starts with one person saying something.'}],
+say:[{s:"'I've noticed [person] often isn't included in things. I'd like to change that.'",d:"'That's just how the group has always been.'"},{s:"'I want to be honest — I've been part of this and I'm not proud of it.'",d:"'I'm not directly involved so it's not really my place.'"}],
+watch:['The exclusion involves a power dynamic (workplace, social hierarchy) — more care needed in approach','You are being excluded — this guide applies to self-advocacy too'],
+reflect:['What does it cost you to include someone? What does it cost them if you do not?','Have you ever been on the receiving end of this? What did you need from someone?'],
+check:['I named what was happening accurately','I took a concrete action — did not just feel bad about it','I owned my part if I had been complicit','I addressed the pattern, not just the incident']}}},
+
+{id:'f2',cat:'Friendship',icon:'💬',skill:'Conflict Resolution',
+title:'Telling someone they hurt your feelings',
+intro:'Learning to tell someone they hurt you — without shutting down or blowing up — is one of the most important emotional skills a person can develop at any age.',
+ages:{
+'3-6':{
+steps:[{t:'Name the feeling first',d:"'I feel sad' or 'I feel mad' — start with the emotion, not the accusation.",tip:'At this age, feeling words ARE the conversation.'},
+{t:'Use I not You',d:"'I felt sad when you took my toy' instead of 'You always take my stuff!'",tip:'Even a 4-year-old can learn this with practice.'},
+{t:'Say what you need',d:"'Can you say sorry?' or 'Can we share next time?'",tip:'Give them a concrete resolution to ask for.'}],
+say:[{s:"'I felt sad when you did not invite me.'",d:"'You're mean and I hate you!'"},{s:"'I need you to say sorry.'",d:"'I'm not your friend anymore.'"}],
+watch:['Child shuts down — help them find just one word','Child escalates physically — address behavior first, then feelings'],
+reflect:['It is hard to say when we are hurt. What made it scary?','Did it feel better after you said it?'],
+check:['I said how I felt with words','I did not hit, scream, or run away','I told the person what happened','I listened to what they said back']},
+'7-12':{
+steps:[{t:'Wait until you are calm',d:"'Talk after you've had time to breathe — not in the middle of the fight.'",tip:'Timing is everything.'},
+{t:'Start with I felt',d:"'When [specific thing] happened, I felt [emotion]. I'm not saying you're bad — that hurt me.'",tip:'Separate the person from the behavior.'},
+{t:'Be specific',d:"'It was specifically when you said _____ in front of everyone. That's what I need to talk about.'",tip:'Vague complaints lead to defensiveness. Specific ones lead to understanding.'},
+{t:'Give them a chance to respond',d:"'After you say it, stop talking. Let them react.'",tip:'This is the hardest part for most people.'}],
+say:[{s:"'I felt embarrassed when you told everyone my secret. I need to know I can trust you.'",d:"'You always betray me! You're the worst friend!'"},{s:"'I'm not trying to start a fight — I just need you to know how that landed.'",d:"'Forget it, you never care anyway.'"}],
+watch:['Friend becomes defensive — coach them to stay present','Child rehearses to the point of anxiety — remind them it does not need to be perfect'],
+reflect:['What were you afraid would happen? Did it?','Did anything surprise you about their response?'],
+check:['I waited until I was calm enough to talk','I used I feel language without attacking','I was specific about what happened','I listened to their response without interrupting']},
+'13-17':{
+steps:[{t:'Know what you actually need',d:"'Before the conversation: Am I looking for an apology? Understanding? A behavior change? Knowing what you want shapes how you say it.'",tip:'Without clarity, the conversation wanders and no one feels resolved.'},
+{t:'Choose the right moment',d:"'In person is almost always better than text. Are you in a place for a real conversation right now?'",tip:'Texting emotional conversations is a minefield.'},
+{t:'Lead with the relationship',d:"'I'm bringing this up because I value our friendship, not because I want to fight.'",tip:'This disarms defensiveness before it starts.'},
+{t:'State impact without assuming intent',d:"'I don't think you meant to hurt me, but when you said _____, it landed this way for me.'",tip:'Separating intent from impact is the most sophisticated skill here.'},
+{t:'Hold space for their reaction',d:"'They might apologize, explain, get defensive, or need time. Your job is to say it — not control their response.'",tip:'Releasing control of their reaction is where real growth happens.'}],
+say:[{s:"'I want to talk about something that's been sitting with me. I don't think you meant anything by it, but it really hurt.'",d:"'You have no idea how badly you messed up.'"},{s:"'I'm not asking you to agree with how I felt — just to hear it.'",d:"'You never care about how I feel.'"}],
+watch:['Teen avoids the conversation entirely — help them write it out first','The friend responds badly — affirm their courage regardless'],
+reflect:['Did saying it change something — even just inside you?','What would you do differently next time?'],
+check:['I was clear about what I needed before I started','I chose an appropriate time and place','I led with the relationship','I named the impact without assuming intent','I let them respond without shutting down']},
+'adults':{
+steps:[{t:'Get clear before you speak',d:"'What exactly happened? What was the impact? What do you need as a result? Unfocused grievances go nowhere.'",tip:'Precision prevents explosion.'},
+{t:'Choose a private unhurried moment',d:"'Not by text, not in public, not right after the incident when you're still raw.'",tip:'Context shapes how everything lands.'},
+{t:'Lead with the relationship not the grievance',d:"'I'm bringing this up because I care about our friendship and I don't want this to sit between us.'",tip:'Care as context changes the entire emotional register.'},
+{t:'Describe behavior not character',d:"'When you [specific action], it landed this way for me: [impact].' Not 'You're a disloyal person.'",tip:'Behavior is changeable. Character verdicts close the door.'},
+{t:'Say what you need going forward',d:"'What I need is [specific]. Can we talk about that?'",tip:'Grievance + repair request = actionable conversation.'}],
+say:[{s:"'There's something I've been sitting with and I want to talk to you about it — not to fight, but because I think we're close enough to handle this.'",d:"'I'm not angry but I just think it's worth noting that you really hurt me.'  [passive]"},{s:"'When you [specific action], it landed this way for me: [impact]. I need [specific going forward].'",d:"'You always do things like this. You're just not a trustworthy person.'"}],
+watch:['Your friend responds defensively and it becomes a fight','You have raised this and nothing changed — the third time, the conversation becomes about the pattern'],
+reflect:['What makes it hard to be honest with friends? What do you risk when you are?','Has a friend ever been honest with you in a way that improved the friendship?'],
+check:['I was specific about what happened','I led with my care for the friendship','I addressed behavior not character','I named what I need going forward','I listened fully to their response']}}},
+
+{id:'c1',cat:'Conflict',icon:'⚡',skill:'Accountability',
+title:'Apologizing and meaning it',
+intro:'A real apology is one of the most powerful things in a relationship. This guide teaches the difference between a real apology and a hollow one — and how to give the kind that actually heals.',
+ages:{
+'3-6':{
+steps:[{t:'Say what you did',d:"'I took your toy.' Name the specific action.",tip:"Don't say sorry if you're upset — name what YOU did."},
+{t:'Say how it hurt them',d:"'That made you sad.' Even simple acknowledgment of impact matters.",tip:'Cause and effect — action created feeling.'},
+{t:'Say what you will do differently',d:"'Next time I'll ask first.'",tip:'Repair is part of the apology.'}],
+say:[{s:"'I'm sorry I hit you. That hurt you and it was wrong.'",d:"'Sorry, okay?!'"},{s:"'I'll be more careful next time.'",d:"'I said sorry! Can we move on?!'"}],
+watch:['Child is forced to apologize — forced apologies teach nothing; try understanding first','Child says sorry immediately to escape — work on meaning it'],
+reflect:['Why is it hard to say sorry?','How do you feel AFTER you apologize?'],
+check:['I named what I did','I said how it hurt the other person','I said I was sorry','I said what I would do differently']},
+'7-12':{
+steps:[{t:'Do not apologize immediately',d:"'Wait until you actually feel it. A quick sorry to escape is an exit strategy — not an apology.'",tip:'Counterintuitive but true.'},
+{t:'Use the three-part structure',d:"'I'm sorry for [specific action]. I know it made you feel [emotion]. I'm going to [specific change].'",tip:'All three parts matter.'},
+{t:'Do not attach a but',d:"'Never say I'm sorry, but you also... That cancels the apology.'",tip:'The but is the most common apology killer.'},
+{t:'Give it time',d:"'Sometimes people need time to accept an apology. You can't demand forgiveness.'",tip:'Accountability without attachment to the outcome.'}],
+say:[{s:"'I'm sorry I told everyone your secret. That was a betrayal and it wasn't okay.'",d:"'I'm sorry you got upset about what I said.'"},{s:"'You don't have to forgive me right now — I just wanted you to know I mean it.'",d:"'I said sorry, so why are you still mad?!'"}],
+watch:['Child apologizes but repeats the behavior — address the pattern','Child refuses to apologize — explore whether shame is the barrier'],
+reflect:['What is the difference between apologizing to make peace and apologizing because you mean it?','Has anyone given you an apology that felt real? What made it that way?'],
+check:['I waited until I actually felt it','I named specifically what I did','I acknowledged how it affected them','I did not add a but','I did not demand forgiveness']},
+'13-17':{
+steps:[{t:'Understand what you are accountable for',d:"'What exactly did you do that caused harm? Not just being a bad friend — specifically what action.'",tip:'Vague accountability leads to vague apologies.'},
+{t:'Separate your guilt from their pain',d:"'An apology is about THEM. If you spend it talking about how bad YOU feel, you have centered yourself.'",tip:'This is where most apologies go wrong.'},
+{t:'Do not explain unless asked',d:"'Explanation can slide into justification. Say what you did and its impact.'",tip:'Lead with accountability, not narrative.'},
+{t:'Make a concrete commitment',d:"'Don't say I'll try to do better. Say specifically what you will and won't do.'",tip:'Concrete is credible. Vague is suspicious.'},
+{t:'Follow through',d:"'The apology is only as good as the behavior that follows it.'",tip:'This is the real apology.'}],
+say:[{s:"'I'm sorry for what I said about you to [name]. It was disloyal and it hurt you. I'm not going to do that again.'",d:"'I'm sorry if you felt hurt by what I said.'"},{s:"'I know I've done this before. I understand if this apology does not mean much yet.'",d:"'I apologized — what more do you want from me?'"}],
+watch:['Teen gives a great apology but nothing changes — address behavior change separately','Teen struggles to apologize because it feels like losing — explore pride and vulnerability'],
+reflect:['What is the hardest part of a real apology for you — meaning it, saying it, or following through?','Have you ever received a real apology? How did it change things?'],
+check:['I was clear on specifically what I did','I centered their pain not my guilt','I did not make excuses or add but','I made a concrete specific commitment','I am ready to follow through']},
+'adults':{
+steps:[{t:'Understand exactly what you did',d:"'What was the specific action, word, or pattern? Broad I'm sorry for everything is not accountability — it's avoidance with an apology attached.'",tip:"Specificity demonstrates you've actually sat with it."},
+{t:'Lead with their experience not your guilt',d:"'What I did affected you this way: [their experience]. I've been sitting with that.' Start with them.",tip:"If you center your guilt, you've made the apology about you."},
+{t:'Say it without qualification',d:"'I am sorry for [specific action].' No but, no if, no when you also. Own it fully.",tip:'Every but cancels the apology.'},
+{t:'Name what is going to be different',d:"'I am going to [specific behavior change].' Vague improvement is not credible.",tip:'Concrete commitments only.'},
+{t:'Give them the response without controlling it',d:"'They may not be ready to accept the apology. You don't get to determine the timeline of their healing.'",tip:"Accountability releases you to them — it doesn't obligate their forgiveness."}],
+say:[{s:"'I've been thinking about what I did and I want to be accountable properly. What I did was [specific]. It caused you [impact]. I'm sorry.'",d:"'I'm sorry if you were hurt by what I said.'"},{s:"'I know you're not ready to accept this yet, and I understand why. I just needed you to know I mean it.'",d:"'I already apologized. How long are we going to do this?'"}],
+watch:['You give a real apology and they use it to continue punishing — worth naming calmly','You keep repeating the behavior — accountability without behavior change is performance'],
+reflect:['What is the difference between apologizing to repair and apologizing to feel less guilty?','What would it take for the other person to actually trust this apology?'],
+check:['I was specific about what I did','I centered their experience not my guilt','I did not use but or if','I made a concrete specific commitment','I released the outcome to them']}}},
+
+{id:'c2',cat:'Conflict',icon:'🤲',skill:'Forgiveness',
+title:'Forgiving someone who hurt you',
+intro:'Forgiveness is one of the most misunderstood concepts in emotional life. This guide helps people understand that forgiveness is not excusing, forgetting, or trusting again — it is ultimately something you do for yourself.',
+ages:{
+'3-6':{
+steps:[{t:'Feel the feeling first',d:"'It's okay to feel mad or sad. You don't have to stop feeling that right away.'",tip:'Premature forgiveness is forced — give the emotion space.'},
+{t:'Forgiveness is your choice',d:"'When you're ready — not before — you can decide to let the mad feeling get a little smaller.'",tip:'Agency over the process.'},
+{t:'Forgiving does not mean forgetting',d:"'You can still remember what happened. Forgiving just means you're not going to hold the mad feeling inside forever.'",tip:'Conceptual clarity even for small children.'}],
+say:[{s:"'I'm still sad about what happened, but I don't want to be angry at you forever.'",d:"'I'll never ever be your friend again!'"},{s:"'I forgive you — but I need you to be more careful next time.'",d:"Saying you forgive someone before you actually feel it."}],
+watch:['Child is forced to forgive immediately — allow more time','Child holds grudges for a very long time — explore what is underneath'],
+reflect:['How does holding the angry feeling inside feel in your body?','What does forgiving feel like? Does it make you feel lighter?'],
+check:['I let myself feel the hurt first','I chose to forgive when I was ready — not before','I know forgiving does not mean pretending it did not happen']},
+'7-12':{
+steps:[{t:'What forgiveness is and is not',d:"'Forgiveness is NOT: approval, forgetting, trusting again, or reconciliation. Forgiveness IS: releasing the ongoing burden of resentment in yourself.'",tip:'This clarification changes the whole conversation.'},
+{t:'Give yourself time',d:"'Pressure to forgive quickly is usually about someone else's comfort, not yours.'",tip:'Self-compassion in the timeline.'},
+{t:'Process the hurt fully',d:"'Talk about it, write about it, cry about it. The feelings need somewhere to go before you can actually release them.'",tip:'Processing is the prerequisite to forgiveness.'},
+{t:'Make a conscious choice',d:"'Forgiveness is not a feeling that happens to you — it's a decision you make, often more than once.'",tip:'Decision, not feeling. Repeated as needed.'}],
+say:[{s:"'I've decided I'm not going to let what you did control how I feel anymore. That's not the same as saying it was okay.'",d:"'I forgive you' before you actually mean it."},{s:"'I'm working on forgiving you — but I'm not ready to trust you the same way yet.'",d:"'Everything's fine' when it isn't."}],
+watch:['Child is carrying resentment that is affecting current relationships — help them understand the cost','Child confuses forgiveness with reconciliation — clarify the distinction'],
+reflect:['Who benefits most when you choose to forgive — you or them?','What would you have to believe about what happened in order to forgive?'],
+check:['I understand that forgiveness does not mean approval or forgetting','I gave myself enough time to actually feel the hurt','I processed the emotion before trying to release it','I made a conscious decision rather than waiting for a feeling']},
+'13-17':{
+steps:[{t:'Forgiveness vs reconciliation',d:"'Forgiveness is internal — your freedom from resentment. Reconciliation is external — it requires both people and changed behavior. You can do one without the other.'",tip:'The most important distinction in this guide.'},
+{t:'Deep harm takes longer',d:"'For significant betrayals or trauma, the process of forgiveness is complex and often needs professional guidance.'",tip:'Know the appropriate scope.'},
+{t:'Watch for pseudo-forgiveness',d:"'Signs the resentment is just underground: passive aggression, bringing it up repeatedly, anger reactivating.'",tip:'Honest self-inventory.'},
+{t:'Forgiveness is not closure',d:"'You may forgive and still have grief. You may forgive and still have limits about the relationship.'",tip:'Accurate expectations prevent disillusionment.'}],
+say:[{s:"'I've decided that holding onto this isn't serving me anymore. That's not me saying it was okay — it wasn't. But I'm not going to let it live in me anymore.'",d:"'I forgive you' while still simmering with resentment."},{s:"'I'm not ready to reconcile — I may never be. But I don't want to carry this anymore.'",d:"'I'll never forgive you' said as a permanent identity."}],
+watch:["Teen using forgiveness as reason not to address ongoing harm — forgiveness doesn't require staying in a harmful situation",'Teen stuck in resentment affecting quality of life — professional support may be needed'],
+reflect:['What are you holding onto by not forgiving? Is it protection? Control? Proof that you were hurt?','Is there someone you have forgiven in a way that actually changed you?'],
+check:['I understand the difference between forgiveness and reconciliation','I processed the hurt genuinely before attempting to release it','I am honest about where I actually am — not performing forgiveness I do not feel','I know forgiveness is for my freedom not their absolution']},
+'adults':{
+steps:[{t:'Carry the distinction clearly',d:"'Forgiveness is internal — it's about your freedom from ongoing resentment. Reconciliation is external — it requires both people and changed behavior. You can do one without the other.'",tip:'This is the most important distinction in this entire guide.'},
+{t:'Give it real time and real support',d:"'For significant betrayals, the process of forgiveness is complex and often needs professional guidance.'",tip:'Know the appropriate scope.'},
+{t:'Watch for pseudo-forgiveness',d:"'Signs the resentment is just underground: passive-aggressive behavior, bringing it up repeatedly, inability to see the person without anger re-activating.'",tip:'Honest self-inventory.'},
+{t:'Let yourself be surprised',d:"'Sometimes after forgiveness, compassion for the person who hurt you becomes possible. Not always. Not required. But it can happen.'",tip:'Where the deepest healing lives.'},
+{t:'Forgiveness is not closure',d:"'You may forgive and still have grief. You may forgive and still have limits about the relationship.'",tip:'Accurate expectations prevent disillusionment.'}],
+say:[{s:"'I've decided that holding onto this isn't serving me anymore. That's not me saying it was okay — it wasn't. But I'm not going to let it live in me anymore.'",d:"'I forgive you' while still simmering with resentment and acting on it."},{s:"'I'm not ready to reconcile — I may never be. But I don't want to carry this anymore.'",d:"'I'll never forgive you' said as a permanent identity."}],
+watch:["Using forgiveness as a reason not to address ongoing harm — forgiveness doesn't require staying in a harmful situation",'Stuck in resentment that is affecting quality of life — professional support may be needed'],
+reflect:['What are you holding onto by not forgiving? Is it protection? Control? Proof that you were hurt?','Is there someone you have forgiven in a way that actually changed you? What did that process look like?'],
+check:['I understand the difference between forgiveness and reconciliation','I processed the hurt genuinely before attempting to release it','I am honest about where I actually am — not performing forgiveness I do not feel','I know forgiveness is for my freedom not their absolution']}}},
+
+{id:'fa1',cat:'Family',icon:'🏠',skill:'Vulnerability',
+title:'Telling someone you are struggling',
+intro:'Many people suffer in silence because they do not know how to tell someone they are not okay. This guide helps people of all ages find words for what they are carrying and open the door to support.',
+ages:{
+'3-6':{
+steps:[{t:'Find a quiet moment',d:"'Mommy/Daddy, I need to tell you something.' Bedtime is often when young children open up.",tip:'Use the natural openings kids create.'},
+{t:'Use body language too',d:"'Show them your tummy feels bad, or point to where it hurts.'",tip:"'My tummy feels scared' is a complete and valid statement."},
+{t:'Let a grown-up help name it',d:"'You don't have to have all the words. Just start with I don't feel good inside.'",tip:'The child opens the door. The adult walks through it.'}],
+say:[{s:"'I don't feel good. I feel scared inside.'",d:"Staying quiet when you're hurting."},{s:"'Can you hug me? Something feels wrong.'",d:"'It's fine' when it isn't."}],
+watch:['Child becomes very quiet or clingy — check in gently','Child acts out physically — behavior may be unexpressed distress'],
+reflect:['How did it feel to tell your grown-up? Did it help?','What would you say to a friend who was scared to tell their parent something?'],
+check:['I told a grown-up I was not feeling okay','I used words or showed them how I felt','I did not try to handle it all by myself','I let them help me']},
+'7-12':{
+steps:[{t:'Pick the right adult',d:"'Who in your life is easiest to talk to? It does not have to be a parent.'",tip:'Safety matters more than blood relation.'},
+{t:'Start with the door-opener',d:"'Can I tell you something that's been on my mind? I don't need you to fix it — I just need you to listen.'",tip:'Asking for listening instead of fixing reduces pressure on both sides.'},
+{t:'Use the iceberg image',d:"'Tell them what's on the surface first. Then, if it feels safe, what's underneath.'",tip:'Layers. You do not have to show everything at once.'},
+{t:'If you start shutting down',d:"'Say: I'm going to keep going even though this is hard. Or take a break and come back to it.'",tip:'Naming the difficulty in real time is a skill.'}],
+say:[{s:"'I've been having a really hard time lately. Can I talk to you?'",d:"'Everything's fine' when it's not."},{s:"'I don't need you to fix it — I just need you to hear me.'",d:"'You wouldn't understand.'"}],
+watch:["Child says 'never mind' mid-conversation — gently encourage them to continue","Parent reacts with alarm or lecture — help child know this isn't their fault"],
+reflect:['Was it as scary as you thought it would be?','What helped? What made it harder?'],
+check:['I chose someone safe to talk to','I asked for what I needed','I said at least one true thing about how I was feeling','I let them respond even if it was imperfect']},
+'13-17':{
+steps:[{t:'Acknowledge the barrier',d:"'It's normal to worry your parent will overreact. You can say: I need to tell you something but I need you to just listen first.'",tip:'Naming the fear out loud often defuses it.'},
+{t:'Write it if speaking fails',d:"'A letter, a text, a note — getting it out matters more than how.'",tip:'The medium is less important than the message.'},
+{t:'Be direct about severity',d:"'If you're struggling with anxiety, depression, or dark thoughts — say: I'm not okay and I need real help. Don't soften it for their comfort.'",tip:'This is one of the most important sentences a teenager can learn.'},
+{t:'If it does not go well',d:"'If your parent reacts badly, you can still reach out to a counselor or doctor. Try someone else.'",tip:'One bad response does not close all doors.'}],
+say:[{s:"'I've been struggling more than I've let on. I think I need some support. Can we talk about getting me some help?'",d:"'I'm fine' when you're in genuine distress."},{s:"'I know this might be hard to hear, but I needed you to know.'",d:"'You never listen anyway, so why bother.'"}],
+watch:["Teen has been masking distress for months — affirm their courage AND how unsustainable it is","Parent minimizes — guide teen toward another resource"],
+reflect:['What finally made you decide to say something? What held you back before?','If a friend was going through the same thing, what would you want them to do?'],
+check:['I chose a safe person to tell','I was honest about how serious it actually is','I said what kind of support I needed','I have a backup plan if my first person does not respond well']},
+'adults':{
+steps:[{t:'Know what kind of help you actually need',d:"'Emotional support? Practical help? Someone to sit with you? A referral? Knowing what you need allows you to ask for it specifically.'",tip:'Specific asks are more likely to get met.'},
+{t:'Choose who you are going to tell and why',d:"'Who is emotionally equipped to receive this? Who has actually shown up for others in your life? Not who should be there — who actually can be.'",tip:'Choose capacity, not obligation.'},
+{t:'Say it without minimizing',d:"'Resist: I know it's not that big of a deal. If it's enough to need support, it's enough.'",tip:'Minimizing robs them of the chance to actually help.'},
+{t:'Tell them specifically what you need',d:"'I'm not looking for advice right now — I just need to say this. Do not make them guess.'",tip:'They can only give what they know you need.'},
+{t:'Let yourself be helped',d:"'Asking is one thing. Actually receiving help — letting someone in — is the harder part for many people.'",tip:'Receiving is a skill.'}],
+say:[{s:"'I've been struggling with something and I've been trying to handle it alone. I think I actually need some support. Can I tell you about it?'",d:"'I'm fine. [visibly not fine]'"},{s:"'I'm not looking for you to fix anything — I just need someone to know what's actually going on with me.'",d:"'I don't want to make it a big thing, so just forget it.'"}],
+watch:['You ask for help and then minimize it when it is offered — this is the receiving problem in real time','You reach out and the person does not show up — this is information about the relationship, not about asking for help in general'],
+reflect:['What story do you carry about what it means to need help as an adult?','What would it change in your life if you let people actually know when you were struggling?'],
+check:['I decided what kind of help I actually needed','I chose someone with genuine capacity not just obligation','I said it without minimizing or apologizing for having needs','I told them specifically what I needed from them','I let myself actually receive what they offered']}}},
+
+{id:'r1',cat:'Romantic',icon:'💑',skill:'Vulnerability',
+title:'Expressing a need your partner is not meeting',
+intro:'Unmet needs that go unspoken become resentments that erode relationships. This guide helps you identify what you actually need, communicate it clearly, and receive your partner response.',
+ages:{
+'13-17':{
+steps:[{t:'Know what you actually need specifically',d:"'Not I need more attention — what does that look like? Time? Checking in? Being included? The more specific, the more actionable.'",tip:"Vague needs produce vague responses."},
+{t:'Choose the right moment',d:"'Not when you are already upset. Not over text. When you are both calm and have time.'",tip:'Timing is a form of care.'},
+{t:'Lead with the relationship',d:"'I'm bringing this up because I care about us — not to start a fight.'",tip:'This framing changes everything.'},
+{t:'Say the need not just the complaint',d:"'Instead of You never make time for me, try I need us to actually plan time together — can we do that?'",tip:'Needs are actionable. Complaints are just grievances.'},
+{t:'Listen to their response',d:"'They may have their own needs in this conversation. Stop formulating your next sentence while they are talking.'",tip:'Real listening is the hardest and most necessary part.'}],
+say:[{s:"'When [situation], I feel [emotion]. What I need is [specific]. Can we talk about how to make that work?'",d:"'You never [x]. Why can't you just...'"},{s:"'I'm not bringing this up to criticize you — I'm bringing it up because I want us to be okay.'",d:"'Forget it, you won't understand anyway.'"}],
+watch:['Partner becomes immediately defensive — slow down, re-lead with your care for them','You bring this up and then immediately minimize it — practice staying with the need'],
+reflect:['What does it feel like to name a need directly? What story do you carry about having needs?','What would it mean for your relationship if both people felt safe enough to ask for what they needed?'],
+check:['I was specific about the need','I chose a good moment','I led with care for the relationship','I named the need not just the complaint','I actually listened to their response']},
+'adults':{
+steps:[{t:'Get specific before you speak',d:"'Not I need more connection — what does connection look like to you? Time without phones? Physical affection? Feeling heard when you share?'",tip:"Vague needs produce vague responses."},
+{t:'Check your timing',d:"'Are you calm? Are they calm? Is the environment private and unhurried? A need expressed in the middle of a fight will not land well.'",tip:'Timing is a form of care.'},
+{t:'Lead with the relationship',d:"'I want to talk about something because I care about us and I want us to be okay.' This signals care, not attack.",tip:'Framing sets the emotional tone.'},
+{t:'State the need then the impact',d:"'When we go days without meaningful time together, I feel disconnected and lonely. I need more closeness — can we talk about how to create it?'",tip:'Impact without attack. Need without demand.'},
+{t:'Actually listen to their response',d:"'Stop formulating your next sentence while they respond. Listen.'",tip:'Real listening is the hardest and most necessary part.'}],
+say:[{s:"'When [specific situation], I feel [emotion]. What I need is [specific]. Can we talk about how to address that?'",d:"'You never [x]. I always have to [y].'"},{s:"'I'm not bringing this up to criticize you — I'm bringing it up because I want us to be close.'",d:"'Forget it, you won't understand anyway.'"}],
+watch:['Partner becomes defensive — slow down, re-lead with your care for them','You bring this up and then immediately minimize it — practice staying with the need'],
+reflect:['What does it feel like to name a need directly? What story do you carry about having needs?','What would it mean for your relationship if both people felt safe enough to ask for what they needed?'],
+check:['I was specific not vague about the need','I checked timing and environment','I led with care for the relationship','I named the impact without attacking','I actually listened to their response']}}},
+
+{id:'r2',cat:'Romantic',icon:'🔥',skill:'Conflict Resolution',
+title:'Fighting fair',
+intro:'All couples fight. The question is not whether you fight but whether you fight in a way that creates understanding or damage. This guide teaches the specific behaviors that distinguish productive conflict from destructive conflict.',
+ages:{
+'13-17':{
+steps:[{t:'Know what you do when things escalate',d:"'Do you raise your voice? Go cold? Bring up old issues? Attack their character? Know your patterns.'",tip:'Self-knowledge is the prerequisite to fair fighting.'},
+{t:'One issue at a time',d:"'Talk about one thing. Not one thing plus everything connected to it. One. Thing.'",tip:'Issue flooding is one of the most common fight-killers.'},
+{t:'No character attacks',d:"'Attack the behavior, not the person. When you did [x] not You are a [type of person].'",tip:'Character attacks damage the relationship in ways that take a long time to heal.'},
+{t:'Take real breaks',d:"'If you are too upset to talk productively — say so. I need 20 minutes. Can we come back to this? Then actually come back.'",tip:'Breaks with return commitments. Not escapes.'},
+{t:'Repair after',d:"'After the fight, check in: That was hard. Are we okay? The repair matters.'",tip:'Repair is not weakness — it is relationship intelligence.'}],
+say:[{s:"'I need a break — not to escape this, but so I can come back and actually talk about it. Can we pick this up in 20 minutes?'",d:"'Fine. Do whatever you want.' [leaves, does not come back]"},{s:"'I want to talk about this specific thing — not everything.'",d:"'And another thing — since we're on the topic of what you always do...'"}],
+watch:['One person always calls the break and the other always re-engages — look at the power dynamic','Your fights leave the other person feeling worse about themselves — something in the style needs to change'],
+reflect:['What do you do in fights that you are least proud of? Where did you learn to fight that way?','What would it look like to fight in a way where you both felt heard at the end?'],
+check:['I stayed on one issue','I attacked the behavior not the character','I took a real break when needed with a return commitment','I made a repair gesture after','I left the fight more connected not more estranged']},
+'adults':{
+steps:[{t:'Know your own tells',d:"'What do you do when a fight escalates? Raise your voice? Go cold? Get sarcastic? Attack character? Bring in old issues? Know your patterns — they are predictable and preventable.'",tip:'Self-knowledge is the prerequisite to fair fighting.'},
+{t:'One issue at a time',d:"'In a fair fight, you talk about one thing. Not one thing plus the sixteen connected things. One. Thing.'",tip:'Issue flooding is one of the most common fight-killers.'},
+{t:'No character attacks ever',d:"'Attack the behavior, not the person. One specific incident, not a personality verdict.'",tip:'Character attacks end relationships — slowly or quickly.'},
+{t:'Take breaks that are real',d:"'If you are above a 7 out of 10 emotionally, call a break — but with a return time. I need 30 minutes. Can we come back at 7?'",tip:'Breaks with return commitments. Not escapes.'},
+{t:'Repair during and after',d:"'Small repair gestures during matter. After: That was hard. I'm still here. Are we okay?'",tip:'Repair is not weakness — it is relationship intelligence.'}],
+say:[{s:"'I need a break — not to escape this, but so I can come back and actually have this conversation productively. Can we pick it back up at [time]?'",d:"'Fine. Do whatever you want.' [leaves, returns hours later still hot]"},{s:"'I want to talk about this specific thing — not everything.'",d:"'And another thing — since we're on the topic of what you always do...'"}],
+watch:['One person always calls the break and the other always re-engages — look at the power dynamic','Your fights leave lasting damage even when resolved — the style of fighting is the problem'],
+reflect:['What do you do in fights that you are least proud of? When did you learn to fight that way?','What would it look like to fight in a way where you both came out feeling more understood?'],
+check:['I stayed on one issue','I attacked the behavior not the character','I took a real break when needed with a return commitment','I made repair gestures during and after','I left the fight more connected not more estranged']}}},
+
+{id:'w1',cat:'Workplace',icon:'💼',skill:'Advocacy',
+title:'Asking for a raise or promotion',
+intro:'Most people underadvocate for themselves professionally. This guide teaches how to make the case clearly and confidently.',
+ages:{
+'adults':{
+steps:[{t:'Build the case before the conversation',d:'Document your impact specifically: revenue generated, problems solved, efficiency improved. Vague descriptions of hard work are much weaker than specific evidence.',tip:'Specifics are the case. Generalities are wishes.'},
+{t:'Know your number and the market',d:'Research what people in your role, at your level, with your experience earn in your market.',tip:'Information is confidence.'},
+{t:'Ask for a meeting explicitly for this purpose',d:"'Schedule it: I'd like to schedule time to discuss my compensation and career path. Let them prepare.'",tip:'Announced conversations go better than ambushes.'},
+{t:'Make the ask directly',d:"'State the number or title you're asking for. Explicitly. Hedging dilutes the ask.'",tip:'Clear asks get clear answers.'},
+{t:'Handle the response with composure',d:"'If not yet: ask what the criteria would be and what the timeline is. Get it in writing if possible.'",tip:"How they respond tells you about your growth path and the organization's good faith."}],
+say:[{s:"'I'd like to discuss my compensation. Based on [specific evidence] and market research, I'm asking for [specific number].'",d:"'I've been here for three years and I just think I deserve more.'"},{s:"'If that's not possible right now, what would the criteria be, and what's a realistic timeline?'",d:"'Oh, okay. Never mind then.' [accepts deflection without clarity]"}],
+watch:['Manager is evasive about criteria after a no — worth probing directly',"You've been told 'soon' repeatedly without movement — set a follow-up date explicitly"],
+reflect:['What story do you carry about asking for things professionally? Where did it come from?','If a colleague with your experience asked for this, would you think they deserved it? Apply the same assessment to yourself.'],
+check:['I documented specific evidence of impact','I knew the market rate','I asked for a meeting explicitly for this purpose','I made the ask clearly — a number or title','I responded to their answer with composure and clear next steps']}}},
+
+{id:'w2',cat:'Workplace',icon:'⚖️',skill:'Conflict Resolution',
+title:'Addressing a conflict with a coworker',
+intro:"Workplace conflict that goes unaddressed doesn't disappear — it calcifies into resentment and affects both people's careers. This guide teaches how to address it professionally and humanely.",
+ages:{
+'adults':{
+steps:[{t:'Choose direct conversation before any other channel',d:"'Before going to HR, your manager, or any third party, try a direct conversation. Skipping this step damages trust.'",tip:'Direct first. Always.'},
+{t:'Focus on work impact not personality',d:"'When our communication breaks down around [x], the project suffers is more productive than you're difficult to work with.'",tip:'Work impact is neutral and observable.'},
+{t:'Invite their perspective',d:"'After you've shared yours, explicitly ask: I'd like to understand how this looks from your side.'",tip:'Curiosity is disarming.'},
+{t:'Find a working agreement',d:"'This does not have to result in friendship. It needs to result in a clear working arrangement.'",tip:'Professional accord is the goal, not personal liking.'},
+{t:'Document and follow up',d:"'After the conversation, a brief follow-up: To confirm, we agreed to [x]. This creates shared accountability.'",tip:'Documentation without accusation is smart practice.'}],
+say:[{s:"'I'd like to find 30 minutes to talk through something that's been affecting our working relationship. I want to address it directly.'",d:"'I've been talking to [manager] about the problem I've been having with you.'"},{s:"'I'd like to understand how this looks from your perspective.'",d:"'Everyone on the team agrees with me about this.'"}],
+watch:['The conflict involves harassment or illegal behavior — that requires HR/legal not just this guide','Colleague refuses direct conversation — this is itself worth noting to your manager'],
+reflect:['What would it cost you to address this directly instead of managing around it indefinitely?',"What's the best version of your professional relationship with this person — and what's one step toward it?"],
+check:['I addressed it directly with the person before going to a third party','I focused on work impact not character','I genuinely invited their perspective','I worked toward a concrete working agreement','I followed up to confirm what was agreed']}}},
+
+{id:'s1',cat:'Social',icon:'🌍',skill:'Empathy',
+title:'Having a conversation across a major difference',
+intro:'Conversations across political, religious, racial, or cultural difference are increasingly rare. This guide teaches how to stay in conversation with someone fundamentally different from you without either pretending or fighting.',
+ages:{
+'13-17':{
+steps:[{t:'Enter curious not to win',d:"'The moment your goal becomes convincing them, you've lost the conversation. Enter asking: What is the experience that led them to this view?'",tip:'Curiosity opens. Persuasion closes.'},
+{t:'Find the person under the position',d:"'Every position sits on top of a set of experiences, fears, and needs. Get under the position to the person.'",tip:'Positions divide. Experiences connect.'},
+{t:'Ask and actually listen',d:"'What has made you care about this? Then listen without formulating your response.'",tip:'Actual listening — not performative — is the skill.'},
+{t:'Share your perspective once',d:"'After genuinely listening: Here's where I'm coming from. Then let it be.'",tip:"Share, don't push."},
+{t:'You do not have to resolve the difference',d:"'I think we see this differently and I'm glad we talked about it is a worthy ending.'",tip:'Connection without agreement is a real outcome.'}],
+say:[{s:"'I'm genuinely curious what brought you to that view. Can you tell me about it?'",d:"'How can you possibly believe that?'"},{s:"'I see it differently, and where that comes from for me is [experience]. I don't expect you to agree.'",d:"'Let me explain why you're wrong about that.'"}],
+watch:['The conversation involves something that directly dehumanizes you or someone you love — you are never obligated to engage','You are doing most of the curious listening while they lecture — this is a one-sided dynamic worth naming'],
+reflect:['When has someone genuinely changed your mind? What did they do that made that possible?','Is there someone in your life you have written off for their views — with whom a real conversation might be possible?'],
+check:['I entered with genuine curiosity','I got under their position to their experience','I listened fully without formulating my counter-argument','I shared my own perspective once clearly without pushing','I ended the conversation with the humanity intact']},
+'adults':{
+steps:[{t:'Enter with curiosity not a plan to win',d:"'The moment your goal becomes convincing them, you've lost the conversation. Enter asking: What is the experience that led them to this view?'",tip:'Curiosity opens. Persuasion closes.'},
+{t:'Find the human experience underneath the position',d:"'Every political, religious, or cultural position sits on top of a set of experiences, fears, values, and needs. Get under the position to the person.'",tip:'Positions divide. Experiences connect.'},
+{t:'Ask and actually listen',d:"'What has made you care about this? Then listen without formulating your response. Fully.'",tip:'Actual listening — not performative — is the skill.'},
+{t:'Share your perspective once clearly',d:"'After genuinely listening: Here's where I'm coming from. Then let it be. You're not there to change them.'",tip:"Share, don't push."},
+{t:'Know when the conversation has run its course',d:"'I think we see this differently and I'm glad we talked about it is a worthy ending. You don't have to resolve the difference.'",tip:'Connection without agreement is a real and meaningful outcome.'}],
+say:[{s:"'I'm genuinely curious what brought you to that view. Can you tell me about it?'",d:"'How can you possibly believe that?'"},{s:"'I see it differently, and I think where that comes from for me is [experience]. I don't expect you to agree — I just wanted you to know where I'm coming from.'",d:"'Let me explain why you're wrong about that.'"}],
+watch:['The conversation involves something that directly dehumanizes you or someone you love — you are never obligated to engage','The difference involves active harm — curiosity does not require tolerating ongoing harm to real people'],
+reflect:['When has someone genuinely changed your mind? What did they do that made that possible?','Is there someone in your life you have written off for their views — with whom a real conversation might be possible?'],
+check:['I entered with genuine curiosity','I got under their position to their experience','I listened fully without formulating my counter-argument','I shared my own perspective once clearly without pushing','I ended the conversation with the humanity intact']}}},
+
+{id:'s2',cat:'Social',icon:'💛',skill:'Emotional Intelligence',
+title:'Telling someone what they mean to you',
+intro:'People often leave important things unsaid because they assume there will be more time. This guide is for the saying of it, before the opportunity is gone.',
+ages:{
+'7-12':{
+steps:[{t:'You do not have to wait for a special moment',d:"'The right time is just when it's true. It does not have to be a birthday or a big moment.'",tip:'An ordinary moment is infinitely better than a missed one.'},
+{t:'Say the specific thing',d:"'Not just you're a good friend but you always make me feel better when I'm sad or you're the funniest person I know.'",tip:'Specific is more meaningful than general.'},
+{t:'You do not have to make it a big deal',d:"'You can just say it. You don't need a speech. Sometimes it's just a sentence.'",tip:'Simple lands just as well as elaborate.'}],
+say:[{s:"'I just wanted to tell you — you're one of my favorite people. I'm really glad we're friends.'",d:"'Thinking it but never saying it because it feels weird.'"},{s:"'I really appreciate you. You always [specific thing].'",d:"'Yeah, you're cool I guess.' [when you actually mean a lot more than that]"}],
+watch:['Child is too embarrassed to say it — normalize warmth as a strength not a weakness','The relationship they want to express this to is complicated — process separately'],
+reflect:['How did it feel to say it? Did it feel weird or good or both?','Is there someone else you have been meaning to say something like this to?'],
+check:['I said it — did not just think it','I said the specific thing not just a general compliment','I let them receive it without immediately changing the subject']},
+'13-17':{
+steps:[{t:'Do not wait for a perfect moment',d:"'The perfect moment is usually the one you're in. The one that always keeps getting postponed does not exist.'",tip:'An adequate moment is infinitely better than a missed one.'},
+{t:'Say the specific thing they have done or been',d:"'You've shown up for me every time I needed someone or You're one of the only people who actually gets me. Specific, true.'",tip:'Specific is more true and more landing than general.'},
+{t:'Do not make them responsible for your feelings about saying it',d:"'This is a little awkward to say is fine. But keep the focus on them and what you want them to know.'",tip:'The statement is for them. Keep them at the center.'},
+{t:'Let it be received',d:"'After you say it, be quiet. Let them have their response.'",tip:'The pause after is part of the gift.'}],
+say:[{s:"'I wanted to tell you — you're one of the most important people in my life and I don't think I say that enough.'",d:"'We should hang out more. It's been too long.' [when what you actually mean is something much more significant]"},{s:"'You don't have to say anything. I just wanted you to know.'",d:"'Texting it at 2am and then saying haha jk when they respond.'"}],
+watch:['Teen is too scared to say it in person — a letter or note is acceptable; the saying matters more than the medium','The relationship they want to express this to is complicated or painful — process separately'],
+reflect:['What has kept you from saying this sooner?','How do you want people to feel around you — and does what you say out loud match that?'],
+check:['I said it — did not just keep planning to','I said the specific thing not a generality','I kept the focus on them rather than on my discomfort in saying it','I let them receive it']},
+'adults':{
+steps:[{t:'Do not wait for a perfect moment',d:"'The moment you're waiting for — where it will feel natural and not at all awkward — may never arrive. The adequate moment you have right now is better than the perfect moment you never have.'",tip:'An adequate moment is infinitely better than a missed one.'},
+{t:'Say the specific thing they have done or been',d:"'You've shown up for me every time it mattered or My life has been better because of you. Specific, true.'",tip:'Specific is more true and more landing than general.'},
+{t:'Say it out loud not in a card not in a text',d:"'If you can be in the same room, be in the same room. If you can call, call. The medium matters.'",tip:'Presence changes what the saying means.'},
+{t:'Do not make them responsible for your feelings about saying it',d:"'This is hard for me to say is fine. But don't make it primarily about your vulnerability — keep the focus on them and what you want them to know.'",tip:'The statement is for them. Keep them at the center.'},
+{t:'Let it be received',d:"'After you say it, be quiet. Let them have their response.'",tip:'The pause after is part of the gift.'}],
+say:[{s:"'I want to tell you something that I should have said a long time ago. [The specific thing they've meant to you.] I wanted you to actually know that.'",d:"'We should hang out more. It's been too long.' [when what you actually mean is something much more important]"},{s:"'You don't have to say anything. I just wanted you to know.'",d:"'Writing the thing down in a journal but never saying it to them.'"}],
+watch:["You say it and they're not sure how to receive it — give them time; some people don't know how to be given things",'This conversation is urgent because the window may be closing — do not let the guide become a reason to wait longer'],
+reflect:['Who in your life deserves to hear something you have not said? What exactly is the thing?','What has kept you from saying it? Is that reason worth the cost?'],
+check:['I said it — did not keep waiting for the perfect moment','I said the specific thing not a generality','I said it in the most present way available to me','I kept the focus on them rather than on my vulnerability in saying it','I let them receive it with whatever time and space they needed']}}},
+
+{id:'f5',cat:'Friendship',icon:'🌱',skill:'Authenticity',
+title:'Reconnecting after time apart',
+intro:'Friendships drift — through distance, busy seasons, or just the slow fade of life getting in the way. This guide helps you reach back toward someone you miss without letting the awkwardness of the gap stop you.',
+ages:{
+'7-12':{
+steps:[{t:'Just reach out first',d:"Send a message, say hi in person, or ask to hang out. The longer you wait for the 'right moment,' the longer you don't.",tip:"Done is better than perfect here."},
+{t:'You can name the gap simply',d:"'It's been a while and I miss hanging out with you' is a complete and good thing to say.",tip:"Naming it directly is less awkward than pretending the gap didn't happen."},
+{t:'Make a specific plan',d:"'Want to come over Saturday?' works much better than 'We should hang out sometime.'",tip:"Open-ended invites rarely turn into anything. Specific ones do."}],
+say:[{s:"'I've been thinking about you. Want to hang out this week?'",d:"'We should hang out sometime!' [for the fifth time, with no follow-through]"},{s:"'It's been too long. I miss you.'",d:"Waiting for them to reach out first forever."}],
+watch:["They don't respond right away — their life may have things in it you don't know about. Give it time before taking it personally",'The gap happened because of a fight or hurt — see the repair guide first'],
+reflect:['What made you think of this person right now? What do they mean to you?','What would it feel like to actually have them back in your life?'],
+check:['I actually reached out — did not just keep planning to','I named the gap honestly — once','I made a specific plan rather than an open-ended gesture','I let them respond without over-interpreting it']},
+'13-17':{
+steps:[{t:'Just reach out — directly',d:"Don't overthink what to say. A simple 'Hey, I've been thinking about you' is enough to open a door.",tip:"The longer you wait to figure out the perfect words, the longer you don't reach out at all."},
+{t:'Name the gap honestly',d:"'I know it's been a while and I'm not sure how we let that happen — I just know I miss talking to you.'",tip:"Naming the gap closes it. Pretending it isn't there makes things awkward."},
+{t:'Say what prompted you',d:"'I heard [song we both loved] and thought of you' or 'I was thinking about that trip we took.' Specific is warmer than general.",tip:'Specific memory shows you actually thought of them — not just sent a mass outreach.'},
+{t:'Make a real plan',d:"Offer something concrete: 'Can we actually catch up this week?' not 'We should catch up sometime!'",tip:"Open-ended gestures often stay open-ended."}],
+say:[{s:"'I've been thinking about you a lot lately and I realized how much I miss you. Can we actually catch up?'",d:"'I'm so bad at keeping in touch, I know, I'm the worst...' [over-apologizing before you've even said hi]"},{s:"'It's been too long and that's on both of us. I want to fix that.'",d:"'We should hang out sometime!' [fourth time saying it, still no plan]"}],
+watch:["They don't respond — give it real time before following up. Their life may have things in it you don't know about",'They respond warmly — let yourself receive that without immediately downplaying the reconnection'],
+reflect:['What was holding you back from reaching out sooner?','What does this person represent to you — what would it mean to have them back in your life regularly?'],
+check:['I actually reached out — did not just keep planning to','I named the gap honestly — once, not as an extended apology','I said something specific that showed I was thinking of them','I made a concrete plan rather than an open-ended gesture']},
+'adults':{
+steps:[{t:'Just reach out — directly',d:"The longer you wait to figure out exactly the right thing to say, the longer you don't. 'I've been thinking about you' is enough.",tip:"Done is better than perfect here."},
+{t:'Name the gap if it was significant',d:"'I know it's been a while' or 'It's been too long' — name it, don't try to pretend it isn't there.",tip:"Naming the gap closes it. Pretending it isn't there makes it awkward."},
+{t:'Say what prompted you to reach out',d:"A specific memory, something that made you think of them, the fact that you miss them. Specific is warmer than general.",tip:'Specific is warmer than general.'},
+{t:'Make a concrete proposal',d:"'Would you want to grab coffee sometime?' is more likely to result in actual connection than 'We should catch up!'",tip:"Open-ended gestures often stay open-ended."},
+{t:"Don't over-apologize for the gap",d:"One acknowledgment is enough. Not a lengthy apology tour. Say it once and move toward the connection.",tip:"One acknowledgment. Then forward."}],
+say:[{s:"'I've been thinking about you lately and I realized how much I've missed you. Can we find time to actually catch up?'",d:"'I'm so bad at keeping in touch, I know, I'm the worst, I'm so sorry I've been so MIA...' [over-apologizing before you've even said hi]"},{s:"'It's been too long. I was thinking about [specific memory] the other day and it made me want to reach out.'",d:"'We should get together sometime!' [for the fourth time, with no follow-through]"}],
+watch:["They don't respond — give it time. One gentle follow-up is fine after a week or two",'They respond warmly — let yourself receive that; sometimes the reconnection is easier than you feared'],
+reflect:['What was holding you back from reaching out sooner?','What does this person represent to you — what would it mean to have them back in your life?'],
+check:['I actually reached out — did not just keep planning to','I named the gap honestly — once','I said specifically what prompted me to reach out','I made a concrete proposal rather than an open-ended gesture','I did not over-apologize for the gap']}}},
+
+{id:'id3',cat:'Identity',icon:'🧠',skill:'Emotional Intelligence',
+title:'When you are overwhelmed and need to pause',
+intro:'Emotional overwhelm is one of the most common reasons conversations fail, relationships fracture, and people shut down. This guide teaches the skill of recognizing overwhelm early and responding without exploding or disappearing.',
+ages:{
+'3-6':{
+steps:[{t:'Name it',d:"'My feelings are too big right now.' That is enough.",tip:'Naming is the beginning of regulation.'},
+{t:'Take space',d:"Ask for a quiet spot, a hug, or a few minutes alone.",tip:'Regulation tools are not weaknesses.'},
+{t:'Come back when ready',d:"'I needed a minute. I'm ready to try again now.'",tip:'Re-engagement after regulation matters.'}],
+say:[{s:"'My feelings are too big. I need a minute.'",d:"Screaming, hitting, or running away and never coming back."},{s:"'I'm ready to try again now.'",d:"Shutting down completely and refusing to re-engage."}],
+watch:['Child cannot tolerate any frustration — explore sensory or emotional regulation support with a professional','Child needs very long periods before re-engaging — worth exploring with a professional'],
+reflect:['What helps your feelings get smaller?','What does your body feel like when you are overwhelmed?'],
+check:['I noticed my feelings were getting too big','I asked for space or help','I came back when I was calmer']},
+'7-12':{
+steps:[{t:'Know your signs',d:"What does overwhelm feel like in YOUR body? Tight chest? Hot face? Heart racing? The earlier you catch it, the more choices you have.",tip:"Self-awareness before overwhelm peaks is the real skill."},
+{t:'Name it out loud',d:"'I'm getting overwhelmed' said out loud shifts you from being inside the feeling to being able to observe it.",tip:"Metacognition as a regulation tool."},
+{t:'Take a real pause — not a shutdown',d:"'I need five minutes' and then actually coming back is healthy. Disappearing is shutdown. Know the difference.",tip:"Functional pause vs. avoidant shutdown."},
+{t:'Come back and complete it',d:"After you have regulated, return to the conversation or situation. The pause is a tool — not an exit.",tip:"Completion is the goal."}],
+say:[{s:"'I'm getting overwhelmed. Can we take five minutes before we continue?'",d:"Crying, screaming, or storming out and never coming back to the conversation."},{s:"'Okay, I'm calmer now. I'm ready to keep talking.'",d:"'Fine. I don't even care anymore.' [shutdown]"}],
+watch:['Child uses regulation as avoidance — never returns to difficult conversations','Child cannot self-regulate at all — this is a therapeutic concern worth addressing'],
+reflect:['What tells you in your body that you are getting overwhelmed?','What helps you come back down? What makes it worse?'],
+check:['I recognized my overwhelm early','I named it rather than acting on it','I took a real pause — not a shutdown','I came back to complete the conversation']},
+'13-17':{
+steps:[{t:'Know your window of tolerance',d:"You have an emotional zone where you can function. Overwhelm pushes you outside it. The goal is not to never feel overwhelmed — it is to recognize the edge before you fall off.",tip:"This concept is central to most emotional regulation therapies."},
+{t:'Have language for it in the moment',d:"'I'm at a 9 right now and I can't have this conversation productively. Can we pause for 30 minutes?' is far better than exploding or shutting down.",tip:'Language in the moment requires having thought about it before the moment.'},
+{t:'Learn what actually regulates you',d:"Scrolling is distraction. A walk, deep breathing, calling someone — these are regulation. Know the difference.",tip:"Real regulation vs. avoidance. They feel different."},
+{t:'Come back — always',d:"The commitment to return is what makes the pause healthy rather than avoidant. 'I need a break but I will come back to this' makes all the difference.",tip:"This commitment must be genuine."}],
+say:[{s:"'I'm reaching my limit and I'm not going to be productive right now. I need to take a break, but I'm not walking away from this. Can we pick it up in an hour?'",d:"'FINE. Whatever. I'm done.' [leaves and does not return for three days]"},{s:"'I noticed I shut down completely in that conversation. I want to try again — more slowly this time.'",d:"'I just can't handle emotional conversations, that's just who I am.'"}],
+watch:["Teen uses regulation needs to control others — 'I can't talk about it, it overwhelms me' as a permanent avoidance strategy","Teen can never regulate at all — any emotion leads to explosion or complete shutdown — therapeutic concern"],
+reflect:['What is the pattern in when you get overwhelmed? What do those situations have in common?','What is the cost to your relationships of shutting down instead of pausing and returning?'],
+check:['I recognized the early warning signs','I communicated a pause rather than just shutting down','I used real regulation — not distraction','I came back to the conversation and completed it','I am curious about what the pattern tells me']},
+'adults':{
+steps:[{t:'Know your window of tolerance',d:"You have an emotional zone where you can function. The goal is not to never feel overwhelmed — it is to recognize the edge before you fall off.",tip:'This is the foundational concept in trauma-informed therapy.'},
+{t:'Have language for it in the moment',d:"'I'm at a 9 right now and I can't have this conversation productively. Can we pause for 30 minutes?' is far better than exploding or shutting down.",tip:'Language in the moment requires having thought about it before the moment.'},
+{t:'Learn what actually regulates you',d:"Scrolling is distraction. A walk, deep breathing, cold water, calling someone — these are regulation. Know the difference.",tip:"Real regulation vs. avoidance."},
+{t:'Come back — always',d:"The commitment to return is what makes the pause healthy rather than avoidant. 'I need a break but I will come back to this' makes all the difference.",tip:"This commitment must be genuine."},
+{t:'Track the pattern',d:"If you find yourself overwhelmed in the same situations repeatedly, there is information in that pattern. Explore it.",tip:"Pattern recognition leads to real growth."}],
+say:[{s:"'I'm reaching my limit and I'm not going to be productive right now. I need to take a break, but I'm not walking away from this. Can we pick it up in an hour?'",d:"'FINE. Whatever. I'm done.' [leaves and does not return for three days]"},{s:"'I noticed I shut down completely in that conversation. I want to try again — more slowly this time.'",d:"'I just can't handle emotional conversations, that's just who I am.'"}],
+watch:["Teen or adult uses regulation needs to control others — 'I can't talk about it, it overwhelms me' as a permanent avoidance strategy","Cannot regulate at all — any level of emotion leads to explosion or complete shutdown — therapeutic concern"],
+reflect:['What is the pattern in when you get overwhelmed? What do those situations have in common?','What is the cost to your relationships of shutting down instead of pausing and returning?'],
+check:['I recognized the early warning signs','I communicated a pause rather than just shutting down','I used real regulation — not distraction','I came back to the conversation and completed it','I am curious about what the pattern tells me']}}},
+
+{id:'c4',cat:'Conflict',icon:'⚖️',skill:'Advocacy',
+title:'Speaking up when something feels wrong or unfair',
+intro:'Many people witness or experience injustice — at school, at home, at work, or in the world — and stay quiet. This guide helps people of all ages understand when and how to speak up effectively.',
+ages:{
+'3-6':{
+steps:[{t:"'That's not fair' is a valid thing to say",d:"Children are allowed to name injustice. 'That doesn't feel fair. Can you help me?' is a complete and appropriate statement.",tip:"Naming injustice is the first step. Validate it."},
+{t:'Tell a grown-up immediately',d:"If something feels really wrong, go get a teacher or parent right now. You do not have to handle it yourself.",tip:"Escalation is appropriate and correct at this age."},
+{t:'You will not get in trouble for telling',d:"Telling an adult about something wrong is the right thing to do.",tip:"Destigmatize reporting early."}],
+say:[{s:"'That didn't feel fair. Can you help me?'",d:"Staying quiet because you think nothing will change."},{s:"'Something happened and I need to tell you.'",d:"'I don't want to be a tattletale.'"}],
+watch:['Child is afraid to report — explore the fear','Child reports everything trivial — teach judgment about what rises to reporting'],
+reflect:['Why is it important to tell a grown-up when something feels wrong?','What happens if everyone stays quiet when something unfair is happening?'],
+check:['I told an adult when something felt really wrong','I did not try to handle it all by myself','I knew it was okay to speak up']},
+'7-12':{
+steps:[{t:'Distinguish tattling from reporting',d:"Tattling: telling to get someone in trouble. Reporting: telling to protect someone from harm. One is self-serving. One is brave.",tip:"This framing changes how children think about speaking up."},
+{t:'Organize the facts first',d:"What happened? When? Who was involved? What did you see or hear? Specific, factual accounts are more effective than emotional appeals.",tip:"Credibility matters."},
+{t:'Choose who to tell',d:"Who is most likely to actually do something? Sometimes that is a parent, a teacher, a counselor, or a principal.",tip:"Strategic about who to tell."},
+{t:'Keep going if the first person does not act',d:"You are allowed to tell the next person up. Advocacy sometimes requires persistence.",tip:"Persistence in advocacy is not the same as being difficult."}],
+say:[{s:"'I need to report something I witnessed. I want to give you the details so you can help address it.'",d:"'I saw something but I don't want to get involved.'"},{s:"'If this doesn't get addressed here, I will need to tell someone else.'",d:"Reporting once, getting no response, and giving up."}],
+watch:['Child is witnessing something serious — escalate beyond this guide immediately to appropriate adults','Child is scared of retaliation — address safety alongside advocacy'],
+reflect:['What is the difference between loyalty to someone and protecting them from harm?','What would you want someone to do if they saw something unfair happening to you?'],
+check:['I understood why I was reporting — to protect, not to punish','I organized the facts clearly before reporting','I chose the right person to tell','I kept going if the first person did not act']},
+'13-17':{
+steps:[{t:'Know your rights',d:"In most schools, you have the right to report concerns and be protected from retaliation. Know what resources exist.",tip:"Knowledge is power in advocacy."},
+{t:'Document everything',d:"Dates, times, what was said or done, who witnessed it. Written records are more powerful than memory.",tip:"Documentation transforms reports."},
+{t:'Start with the appropriate internal channel',d:"A direct conversation or official report through proper channels first. Going public has costs and benefits — try internal first.",tip:"Sequence matters."},
+{t:'Prepare for the possibility of nothing changing immediately',d:"Institutions often resist change. Your report may be the seed that grows slowly. That does not reflect on the truth of what you reported.",tip:"Manage expectations without dampening courage."},
+{t:'Protect yourself',d:"Retaliation happens. Know who your support system is. Do not face it alone.",tip:"Sustainability of advocacy requires self-protection."}],
+say:[{s:"'I'm reporting this formally because what happened was wrong and I want it documented.'",d:"'There's no point in reporting it — nothing will change.'"},{s:"'I've documented what I witnessed. I'm bringing it to you first, and if it doesn't get addressed, I'll be going to [next authority].'",d:"'I'll just post about it online instead of going through proper channels first.'"}],
+watch:['Teen is reporting something serious — connect them with appropriate adult support alongside this guide','Teen faces retaliation — this becomes a safety issue that supersedes the original report'],
+reflect:['What makes something worth the cost of speaking up?','What is the difference between speaking up because it is right and speaking up to be seen doing it?'],
+check:['I documented the specifics in writing','I started with the appropriate internal channel','I have a next step ready if this channel does not respond','I have people who support me in this']},
+'adults':{
+steps:[{t:'Know what you are raising and what you want to happen',d:"Before you speak up, be clear: what is the concern, what evidence do you have, and what outcome are you seeking?",tip:"Prepared clarity is your most powerful tool."},
+{t:'Start with the right level',d:"Go to your direct manager first for most issues. Bypass them only if they are part of the problem or the concern rises above their authority.",tip:'Sequence matters for institutional navigation.'},
+{t:'Speak to behavior and impact, not character',d:"'The current practice of [x] creates [specific risk/harm]' is more effective than '[person] is unethical.'",tip:"Systems framing is more actionable and less personal."},
+{t:'Document',d:"Write down what you reported, when, to whom, and their response. This protects you and creates a record of good-faith effort.",tip:"Documentation is self-protection."},
+{t:'Know your escalation path',d:"If internal channels fail: HR, compliance, external regulatory bodies, legal counsel. Know the sequence ahead of time.",tip:"Know your path before you need to walk it."}],
+say:[{s:"'I want to raise something formally and I want to document that I've raised it. The concern is [specific]. The impact is [specific]. I'm asking for [specific response].'",d:"'Something just feels off around here but I can't really say what...'"},{s:"'If this doesn't get addressed through this channel, I'll need to escalate to [next level]. I wanted to be transparent about that.'",d:"Venting to colleagues without ever reporting through proper channels."}],
+watch:['Concern involves illegal activity — you may need legal counsel before acting','Retaliation feels likely — protect yourself first'],
+reflect:['What is the cost of not speaking up? To you, to others, to the organization?','What is the cost of speaking up incorrectly — emotionally charged, poorly documented, wrong channel?'],
+check:['I was clear on what I was raising and what I wanted','I started at the appropriate level','I focused on behavior and impact not character','I documented the report','I know my escalation path if needed']}}},
+
+{id:'fa3',cat:'Family',icon:'🌊',skill:'Emotional Intelligence',
+title:'Having hard conversations when home life is difficult',
+intro:'For children and adults in difficult home situations — high conflict, mental illness, addiction, or instability — the task of naming feelings and asking for support is both more important and more complicated. This guide honors that reality.',
+ages:{
+'3-6':{
+steps:[{t:'Find your safe person',d:"Who makes you feel safe? A grandparent, teacher, neighbor, or family friend. That person matters.",tip:'One safe adult is enough.'},
+{t:"It is not your fault",d:"Whatever is hard at home — it is not because of you. You are loved even when things are messy.",tip:"This may need to be said explicitly and repeatedly."},
+{t:'You are allowed to need things',d:"You are allowed to need a hug, help, comfort. Your needs are real and worth meeting.",tip:'Basic entitlement to care.'}],
+say:[{s:"'Things at home feel scary sometimes. I feel better when I'm with you.'",d:"'Everything at my house is fine' when it isn't."},{s:"'I need someone to help me feel safe.'",d:"Pretending you are okay when you are not."}],
+watch:['Child is in a genuinely unsafe situation — mandatory reporting and adult intervention, not this guide alone','Child is being parentified — taking care of adults emotional needs instead of the reverse'],
+reflect:['Who makes you feel safe?','You do not have to fix anything at home. That is not your job.'],
+check:['I know who my safe person is','I told them what I needed','I know it is not my fault']},
+'7-12':{
+steps:[{t:'You cannot fix your family',d:"Your parent's struggles, the conflict at home — none of that is yours to fix. You are allowed to focus on your own life.",tip:"Release from inappropriate responsibility."},
+{t:'Find your outside places',d:"School, a friend's house, a sport, a library — places that feel stable when home is not.",tip:'External stabilizers matter enormously.'},
+{t:'Tell one safe adult',d:"You do not have to tell the whole story. But having one adult outside your home who knows your life is hard gives you an anchor.",tip:"One knowing adult changes outcomes for children significantly."},
+{t:'Your feelings are valid even when adults around you are not coping',d:"If the grown-ups around you are struggling, your feelings might get dismissed. They are still real. Find a place to put them.",tip:'Feelings need a witness.'}],
+say:[{s:"'Things at home are hard right now. I don't need you to do anything — I just needed to tell someone.'",d:"'My family is fine' to every adult who might otherwise offer support."},{s:"'Can I spend some time here? It helps me feel better.'",d:"Isolating completely because home feels bad."}],
+watch:['Child is in a dangerous situation — this guide is not enough; mandatory reporting may apply','Child is absorbing adult emotions and responsibilities — parentification warrants direct intervention'],
+reflect:['What is one place outside of home where you feel like yourself?','What do you need that you are not getting? Is there anyone who could help with that?'],
+check:['I know what I can and cannot control at home','I have found at least one safe outside space','I have told one adult what is actually going on','I know my feelings matter even when no one at home is acknowledging them']},
+'13-17':{
+steps:[{t:'Grieve the family you needed',d:"You may have a complicated relationship with a family that could not give you what you needed. That is a real loss and it deserves grief, not just coping.",tip:"Naming it as loss matters."},
+{t:'Find chosen family',d:"Friends, mentors, coaches, teachers — the people you choose to be your people are real. You are allowed to depend on them.",tip:"Chosen relationship as legitimate attachment."},
+{t:'Do not let the home environment become your identity',d:"What happens at home is not who you are. Your resilience, your values, your future — these are yours.",tip:"Identity apart from circumstances."},
+{t:'Know the resources',d:"School counselors, hotlines, trusted adults — know what is available and do not wait for crisis to access them.",tip:"Resource awareness before acute need."},
+{t:'Talk to someone who can actually help',d:"A therapist, school counselor, trusted adult — not as a burden but as a person with needs that deserve meeting.",tip:"Framing help-seeking as self-respect."}],
+say:[{s:"'I want to be honest with you about what home is like. I'm not asking you to fix it — I just need you to know.'",d:"'My family is fine' while absorbing enormous amounts of stress alone."},{s:"'I've been handling a lot at home and I think I need more support than I've been asking for.'",d:"'It's fine. Lots of people have it worse.'"}],
+watch:['Teen is in genuine danger — safety supersedes all else','Teen is parentified and struggling to ask for their own needs — help them understand it is allowed'],
+reflect:['What has growing up in your family taught you that you want to carry forward? What do you want to leave behind?','What does the version of you at 25 need you to do right now?'],
+check:['I named the reality of my situation to at least one safe person','I identified my outside anchors — people and places','I gave myself permission to grieve what I did not have','I know what resources exist and I am willing to use them']},
+'adults':{
+steps:[{t:'Grieve the family you needed',d:"If your family of origin could not give you what you needed, that is a real loss — not just something to cope with and move past.",tip:"Naming it as loss matters."},
+{t:'Find chosen family',d:"Friends, mentors, therapists, communities — the people you choose to be your people are real attachments. You are allowed to depend on them.",tip:"Chosen relationship as legitimate attachment."},
+{t:'Separate your history from your current identity',d:"What happened in your family is not who you are. The patterns you absorbed are not your destiny — they are your starting point.",tip:'Identity apart from history.'},
+{t:'Get real support',d:"A therapist, a support group, a trusted community — not as a burden but as a person with needs that deserve meeting.",tip:"Framing help-seeking as self-respect."},
+{t:'Make conscious choices about your family now',d:"How much contact? What topics are discussed? What are your limits? You have more agency than you may have exercised.",tip:"Conscious choice is agency."}],
+say:[{s:"'I want to be honest with someone about what my home life has actually been like. I'm not asking you to fix it — I just need you to know.'",d:"'My family is fine' while carrying an enormous amount quietly."},{s:"'I've been managing this alone for a long time and I think I need real support.'",d:"'It's fine. Lots of people have it worse.'"}],
+watch:['Patterns from family of origin are showing up in current relationships — this is where therapy can be most powerful','Contact with family is causing real harm — limits are appropriate and do not require justification'],
+reflect:['What did you learn in your family about emotion, conflict, and love — and which of those lessons serve you now?','What would it mean to be in a family — your current one, chosen or otherwise — that feels different from what you grew up in?'],
+check:['I named the reality of my family history honestly to at least one safe person','I identified my chosen family — people I can actually depend on','I have given myself permission to grieve what I did not have','I am making conscious choices about my family relationships rather than just absorbing them']}}},
+
+{id:'r3',cat:'Romantic',icon:'💭',skill:'Vulnerability',
+title:'Asking for what you need emotionally',
+intro:'Many people never learn to ask for emotional support directly — they hint, perform the need, or go without. This guide teaches the skill of clear, direct emotional need expression without manipulation or apology.',
+ages:{
+'13-17':{
+steps:[{t:'Name the feeling to yourself first',d:"What are you actually feeling right now? Not the behavior you want from your partner — the underlying emotional state. Sad? Anxious? Lonely?",tip:'Feelings first. Then needs.'},
+{t:'Say the feeling out loud',d:"'I'm feeling really anxious right now' or 'I'm upset and I'm not okay.' The feeling itself, stated plainly.",tip:'Naming the feeling is the first act of asking.'},
+{t:'Say what you need specifically',d:"'I need you to just sit with me.' 'I need to talk about this without you trying to fix it.' Specific is kinder than vague.",tip:"Specific asks can be met. Vague appeals often cannot."},
+{t:'Check their capacity',d:"'Is now a good time to need something from you?' is a completely reasonable question. Their capacity matters too.",tip:"Their capacity matters too."}],
+say:[{s:"'I'm feeling [emotion] and I need [specific]. Are you in a place for that right now?'",d:"[sighing loudly, being obviously upset, saying 'I'm fine' when they ask]"},{s:"'I know you can't always give me exactly what I need. This is what would help right now.'",d:"'You never know what I need!' [when you have not said what you need]"}],
+watch:['You find it impossible to ask directly — the gap between this and what you actually do is worth exploring','Partner consistently cannot meet needs — this is information about the relationship worth understanding'],
+reflect:['What story do you carry about what it means to have emotional needs? Where did that come from?','What would it change in your relationship if you could ask for what you needed directly?'],
+check:['I named the emotion to myself first','I said it out loud — the actual feeling','I asked for something specific','I checked their capacity to give it']},
+'adults':{
+steps:[{t:'Name the emotion first — to yourself',d:"What are you actually feeling right now? Not the behavior you want from your partner — the underlying emotional state.",tip:'Feelings first. Then needs.'},
+{t:'Say the feeling out loud',d:"'I'm feeling really anxious right now' or 'I'm grieving something and I'm not okay.' The feeling itself, stated plainly.",tip:'Naming the feeling is the first act of asking.'},
+{t:'Say what you need specifically',d:"'I need you to just sit with me.' 'I need to talk about this without you trying to fix it.' Specific is kinder than vague.",tip:"Specific asks can be met. Vague appeals often cannot."},
+{t:'Check their capacity',d:"'Is now a good time to need something from you?' is a reasonable question. Their capacity matters too.",tip:"Their capacity matters too."},
+{t:'Receive what they give without devaluing it',d:"If they try but it is not quite right, build on it: 'Thank you — it's helping. I could use a little more [x] if possible.'",tip:"Perfect is the enemy of good in emotional support."}],
+say:[{s:"'I'm feeling [emotion] and I need [specific]. Are you in a place to give me that right now?'",d:"[sighing loudly, being obviously upset, saying 'I'm fine' when they ask]"},{s:"'Thank you for being here. It's helping. I could use a little more [x] if you can.'",d:"'That's not really what I needed' [after they tried]"}],
+watch:['You find it impossible to ask directly — the gap between this and what you actually do is worth exploring in therapy','Partner consistently cannot meet needs — information about the relationship worth examining together'],
+reflect:['What story do you carry about what it means to have emotional needs? Where did that come from?','What would it change in your closest relationships if you could ask for what you needed directly?'],
+check:['I named the emotion to myself first','I said it out loud — the actual feeling','I asked for something specific','I checked their capacity to give it','I received what they gave and built on it']}}},
+
+{id:'r4',cat:'Romantic',icon:'🛤️',skill:'Transparency',
+title:'Talking about the future — and whether it aligns',
+intro:'Conversations about the future — children, where to live, career, values, and what you both want — are often avoided until they become crises. This guide helps you have them earlier, honestly, and without manufactured urgency.',
+ages:{
+'13-17':{
+steps:[{t:'Know what you actually want first',d:"What do YOU want? Not what seems reasonable or what you think they want to hear. Your actual feelings about the relationship and where it's going.",tip:'You cannot have this conversation without clarity about your own answer.'},
+{t:'Create the context — do not ambush',d:"'I'd like to talk about us and where we're headed. Can we find some time?' A small amount of warning means they can actually show up for the conversation.",tip:'Ambush produces defenses. Context produces presence.'},
+{t:'Say your truth plainly',d:"'Here's where I am: [honest statement about what you want from this relationship].' Not a performance. Not a manipulation. Just true.",tip:'Your truth, stated plainly, is the starting point.'},
+{t:'Ask a direct open question',d:"'How are you feeling about us?' or 'I'd love to know where you are.' Open, not leading.",tip:'Open questions get honest answers. Leading questions get managed ones.'}],
+say:[{s:"'I'd like to talk about us — not to put pressure on anything, just because I'd like to actually know where we both are. Can we do that?'",d:"'So... I mean... I'm not like, saying we have to put a label on it or whatever...'"},{s:"'Here's where I am honestly: [true statement]. I'd love to know where you are.'",d:"Assuming you are on the same page because the conversation has not happened."}],
+watch:['You have been avoiding this conversation for months — the avoidance itself is telling you something','Their answer is not what you hoped for — make sure you respond to what they actually said, not what you wish they had said'],
+reflect:['What are you actually afraid of finding out? Is that fear directing the conversation?','What would it mean for your self-respect to know clearly — even if the answer is not what you wanted?'],
+check:['I knew what I actually wanted before I started the conversation','I gave them some context rather than ambushing them','I stated my truth plainly','I asked an open honest question','I received their answer for what it actually was']},
+'adults':{
+steps:[{t:'Name that you want to have the conversation — in advance',d:"'I'd like to talk about [future topic] when you have the time. It's not urgent — but it matters to me.' This gives both people time to think.",tip:"Advance notice transforms the tone of the conversation."},
+{t:'Share your own picture first — fully',d:"What do you actually want? Not what seems reasonable or what you think they want to hear. Your actual picture.",tip:"Your real desire, not your negotiated desire."},
+{t:'Ask for their actual picture',d:"'What do you actually see for yourself?' Not 'are you okay with what I want' — their actual, unconstrained vision.",tip:"Their real desire, not their reaction to yours."},
+{t:'Identify the overlap — and the gaps',d:"Where do you both want the same things? Where is there genuine difference? Name both explicitly.",tip:"Honesty about gaps is the only path to addressing them."},
+{t:'Come back to it',d:"One conversation rarely resolves big future questions. Agree to keep talking. Check in on this regularly.",tip:"This is an ongoing conversation, not a one-time decision."}],
+say:[{s:"'I'd love to talk about [what we each want from this relationship / children / where we might live] — not to pressure anything, just because I think we're at a place where it's worth actually talking about it.'",d:"'I mean, eventually we'll figure out the kids thing, right?'"},{s:"'I want to hear your actual picture — not just what you think I want to hear. I can handle the real answer.'",d:"'Obviously we'd both want [x], right?' [assuming]"}],
+watch:['The gap you discover is genuinely significant — do not paper over it; significant incompatibility discovered clearly is better than discovered after more investment','One person has already made internal decisions that the other does not know about — this is a disclosure issue as much as a planning issue'],
+reflect:['Have you been avoiding this conversation because you are afraid of what you will find out?','What do you actually want — for yourself — and does your partner know that?'],
+check:['I gave advance notice rather than ambushing them','I shared my actual picture not my negotiated one','I asked for their actual picture not their reaction to mine','I named both the overlap and the gaps honestly','I agreed to keep talking rather than treating this as a one-time resolution']}}},
+
+{id:'w3',cat:'Workplace',icon:'📣',skill:'Authenticity',
+title:'Sharing a different idea or vision than your team',
+intro:'There are moments in professional life when you see something — a better way, a missed opportunity, a direction heading wrong — and do not know how to say it. This guide helps you advocate for your vision without blowing up your professional standing.',
+ages:{
+'13-17':{
+steps:[{t:'Make sure you actually understand the current approach',d:"Before you advocate for a different one, genuinely understand why the current direction was chosen. There may be context you do not have.",tip:"Understanding precedes advocacy."},
+{t:'Frame it as adding to, not opposing',d:"'I've been thinking about how we could build on what we're doing...' rather than 'I think this is the wrong approach.'",tip:"Addition is easier to receive than opposition."},
+{t:'Come with a specific idea not just a critique',d:"'Here's what I'd suggest instead, and here's why' is far more influential than 'I don't think this is working.'",tip:"Critique without proposal is just venting."},
+{t:'Be genuinely open to being wrong',d:"If your idea is examined and found to be weaker, that is valuable information. Go in with real openness.",tip:"Openness to being wrong makes your advocacy more credible."}],
+say:[{s:"'I've been thinking about this project and I have an idea I'd love to share. Would you be open to hearing it?'",d:"'Honestly I think we're going in the completely wrong direction.'"},{s:"'I'm open to being shown why this doesn't work — I'd just love for the idea to actually get considered.'",d:"Going around to everyone else before talking to the person in charge."}],
+watch:['Your idea requires someone to admit a mistake — this has different political dynamics and requires more care','You are being dismissed without a real hearing — this is worth naming directly: I would like this to actually get considered before it is set aside'],
+reflect:['How much of your conviction that you are right is based on evidence vs. how it feels from where you sit?','What would it take for you to update your view?'],
+check:['I understood the current approach and its reasoning before advocating','I framed my idea as building on rather than opposing','I came with a proposal not just a critique','I was genuinely open to learning that I was wrong']},
+'adults':{
+steps:[{t:'Make sure you actually understand the current vision',d:"Before you advocate for a different one, make sure you understand why the current direction was chosen. There may be context you do not have.",tip:"Understanding precedes advocacy."},
+{t:'Frame it as building on, not opposing',d:"'I've been thinking about how we could extend what we're doing into...' rather than 'I think we're going in the wrong direction.'",tip:"Addition is easier to receive than opposition."},
+{t:'Have a proposal — not just a critique',d:"'Here's what I'd suggest instead, and here's why' is far more influential than 'I don't think this is the right approach.'",tip:"Critique without proposal is just venting."},
+{t:'Choose who you share it with carefully and in what order',d:"A direct conversation with your manager before a broader push. Building support before presenting. Understanding the politics of the idea.",tip:"Sequencing is strategy."},
+{t:'Be genuinely open to being wrong',d:"If your idea is genuinely examined and found to be weaker than the current direction, that is valuable. Go in with real openness.",tip:"Openness to being wrong makes your advocacy more credible."}],
+say:[{s:"'I've been thinking about how we might extend [current direction] and I have a different angle I'd love to share. Would you be open to hearing it?'",d:"'I honestly think we're going in the completely wrong direction.'"},{s:"'I want to be clear that I'm genuinely open to being shown why this doesn't work — I'd just love for the idea to actually get considered.'",d:"Sharing the idea laterally with colleagues before talking to your manager."}],
+watch:['Your vision would require the organization to admit a mistake — this has different political dynamics','You are being dismissed without a real hearing — worth naming directly'],
+reflect:['How much of your conviction that you are right is based on evidence vs. how it feels from where you sit?','What would it take for you to update your view?'],
+check:['I understood the current vision and its reasoning before advocating','I framed my idea as building on rather than opposing','I came with a proposal not just a critique','I chose who I talked to and in what order strategically','I was genuinely open to learning that I was wrong']}}},
+
+{id:'s3',cat:'Social',icon:'💡',skill:'Emotional Intelligence',
+title:'Receiving criticism without shutting down or attacking',
+intro:'The ability to receive feedback or criticism without defensiveness is one of the rarest and most valuable emotional skills at any age. Most people either shut down or counter-attack. Both prevent growth. This guide teaches the third option.',
+ages:{
+'7-12':{
+steps:[{t:'Take a breath before you react',d:"When someone says something critical, your first feeling is usually hurt or anger. That is normal. Breathe before you respond.",tip:"The pause is everything."},
+{t:'Listen for the part that might be true',d:"Even if the feedback feels unfair or is delivered poorly, is there any part of it that has some truth in it? Look for that first.",tip:"Finding the grain of truth is a skill, not a defeat."},
+{t:'Ask a question instead of defending',d:"'Can you tell me more about what you mean?' buys time, shows maturity, and often gets you more useful information.",tip:"Curiosity before defense."},
+{t:'You can disagree — later',d:"If there are parts of the feedback that are genuinely unfair, you can address those — but after you have acknowledged what might be true.",tip:"Acknowledge first. Disagree after. The order matters."}],
+say:[{s:"'That's hard to hear. Can you tell me more about what you mean?'",d:"'That's so unfair! You don't understand!'"},{s:"'I think you're right that [part of it]. I want to think about the rest.'",d:"'Fine. Whatever.' [shutdown]"}],
+watch:['Child finds it physically impossible to receive any criticism — this is worth exploring; the roots are often in early experiences of criticism as punishment','Child agrees with everything and then does not change — performative acceptance is its own defense'],
+reflect:['What does criticism feel like in your body? Where does it go?','When has feedback changed you in a way that mattered? What made that possible?'],
+check:['I paused before responding','I looked for the part that might be true','I asked a question before defending','I acknowledged what was true','I saved my disagreement for after']},
+'13-17':{
+steps:[{t:'Create a pause before responding',d:"Your nervous system is going to want to respond immediately — either with deflection or retaliation. Pause. Take three seconds before you say anything.",tip:'The pause is the most important thing on this list.'},
+{t:'Listen for the signal in the noise',d:"Criticism is often delivered imperfectly. Even if the delivery is poor, there may be something true in it. Your job is to find the signal — the part that might be useful.",tip:'Separate the message from the delivery method.'},
+{t:'Ask for clarification before defending',d:"'Can you say more about what you mean by that?' This buys time, demonstrates good faith, and might give you more useful information.",tip:"Curiosity before defense."},
+{t:'Acknowledge what is true',d:"Even if you disagree with most of it, is there anything in it that is accurate? Name that first. Selective acknowledgment is not capitulation.",tip:'Partial acknowledgment is possible and powerful.'},
+{t:'Address what you disagree with — later',d:"If there are things in the feedback that are genuinely unfair or inaccurate, address them — but after acknowledging what is true, and after you have had time to regulate.",tip:'Defense after acknowledgment is far more credible than immediate counter-attack.'}],
+say:[{s:"'That's hard to hear. Can I take a moment? [pause] I think you're right that [specific element]. I want to think more about the rest.'",d:"'That's incredibly unfair and I can't believe you're saying that.'"},{s:"'Can you tell me more about what you mean by that?'",d:"'Well, the reason I did that is because YOU have been [list of countergrievances].'"}],
+watch:['Teen finds it physically impossible to receive any criticism — worth exploring deeply; roots are often in early experiences of criticism as punishment or rejection','Teen receives criticism by completely agreeing with everything and then not changing — performative acceptance is its own defense'],
+reflect:['What does criticism feel like in your body? Where does it live?','When has feedback changed you in a way that mattered? What made that possible?'],
+check:['I paused before responding','I looked for the signal even if the delivery was rough','I asked for clarification before defending','I acknowledged what was true','I addressed disagreement after — separately from my initial response']},
+'adults':{
+steps:[{t:'Create a pause before responding',d:"Your nervous system is going to want to respond immediately — either with deflection or retaliation. Pause. Take three seconds before you say anything.",tip:'The pause is the most important thing on this list.'},
+{t:'Listen for the signal in the noise',d:"Criticism is often delivered imperfectly. Even if the delivery is poor, there may be something true in it. Find the signal.",tip:'Separate the message from the delivery method.'},
+{t:'Ask for clarification before defending',d:"'Can you say more about what you mean by that?' This buys time, demonstrates good faith, and might give you more useful information.",tip:"Curiosity before defense."},
+{t:'Acknowledge what is true',d:"Even if you disagree with most of it, is there anything in it that is accurate? Name that. Selective acknowledgment is not capitulation.",tip:'Partial acknowledgment is possible and powerful.'},
+{t:'Address what you disagree with — later',d:"If there are things that are genuinely unfair or inaccurate, address them — but after acknowledging what is true, and after you have had time to regulate.",tip:'Defense after acknowledgment is far more credible than immediate counter-attack.'}],
+say:[{s:"'That's hard to hear. Can I take a moment? [pause] I think you're right that [specific element]. I want to think more about the rest.'",d:"'That's incredibly unfair and I can't believe you're saying that.'"},{s:"'Can you tell me more about what you mean by that?'",d:"'Well, the reason I did that is because YOU have been [list of countergrievances].'"}],
+watch:['You find it physically impossible to receive any criticism — worth exploring deeply; roots are often in early experiences of criticism as punishment','You receive criticism by completely agreeing with everything and then not changing — performative acceptance is its own defense'],
+reflect:['What does criticism feel like in your body? Where does it live?','When has feedback changed you in a way that mattered? What made that possible?'],
+check:['I paused before responding','I looked for the signal even if the delivery was rough','I asked for clarification before defending','I acknowledged what was true','I addressed disagreement after — separately from my initial response']}}},
+
+{id:'s4',cat:'Social',icon:'🤲',skill:'Empathy',
+title:'Being present for someone who is struggling',
+intro:'When someone we love is in real pain, our instinct to fix it can push them away. This guide teaches how to be genuinely present at any age — which is almost always more helpful than advice.',
+ages:{
+'3-6':{
+steps:[{t:'Stay with them',d:"Do not leave. Sit next to them. Your presence says more than any words.",tip:'Presence is the most powerful thing at this age.'},
+{t:'Use simple kind words',d:"'I'm here.' 'You're not alone.' 'Do you want a hug?' Small, warm, simple.",tip:'Short and warm. No lecturing.'},
+{t:'Tell a grown-up if you are worried',d:"If a friend seems really sad or hurt, it is always okay to tell a trusted adult.",tip:'Knowing when to escalate is a skill.'}],
+say:[{s:"'I'm here. You're not alone.'",d:"'Don't cry! It's not a big deal.'"},{s:"'Do you want to talk about it? Or do you just want me to sit with you?'",d:"'At least you still have [x]."}],
+watch:["Child does not know what to do — that's okay. Teaching presence without needing to fix is the lesson","Child becomes distressed by their friend's distress — help them regulate their own feelings first"],
+reflect:['How did it feel to just be there without trying to fix it?','What would you want a friend to do if you were the one who was sad?'],
+check:['I stayed with the person instead of leaving','I said something kind and simple','I asked if they wanted to talk or just have company','I told a grown-up if I was worried about them']},
+'7-12':{
+steps:[{t:'Resist the fix impulse',d:"Your first job is not to solve anything. Your first job is to be with them in it. Sit with the discomfort of not being able to make it better.",tip:"Presence, not solutions."},
+{t:'Ask before you offer',d:"'What do you need from me right now? Do you want to talk about it, or do you just want company?' Then do the thing they asked for.",tip:"Never assume which kind of support is needed."},
+{t:'Reflect back what you are hearing',d:"'It sounds like you're feeling really [emotion]. Is that right?' This tells them you are actually listening.",tip:"Accurate reflection is a profound gift."},
+{t:'Do not minimize or compare',d:"'At least...' and 'I know someone who...' are exits from their experience, not bridges to it.",tip:"Comparison and minimizing, even well-intentioned, are isolating."}],
+say:[{s:"'I'm here. You don't have to be okay. What do you need?'",d:"'At least you have [x]. Things could be so much worse.'"},{s:"'It sounds like you're feeling really [emotion]. Is that right?'",d:"'I know exactly how you feel — when the same thing happened to me...' [taking it over]"}],
+watch:['Your own discomfort with their pain is driving the fix impulse — sit with your own discomfort first','Friend is in genuine crisis — being there includes actively helping them get adult support'],
+reflect:['When have you been in pain and someone was truly there for you? What did they do?','What makes it hard for you to just be present without trying to fix things?'],
+check:['I asked what kind of support they needed before assuming','I reflected back what I was hearing','I did not minimize compare or silver-lining it','I got a grown-up if I was worried about their safety']},
+'13-17':{
+steps:[{t:'Resist the fix impulse',d:"Your first job is not to solve anything. Your first job is to be with them in it. Sit with the discomfort of not being able to make it better.",tip:"Presence, not solutions."},
+{t:'Ask before you offer',d:"'What do you need from me right now? Do you want to be heard, or do you want help thinking through options?'",tip:"Never assume which kind of support is needed."},
+{t:'Reflect back',d:"Name what you are hearing: 'It sounds like you're feeling [emotion]. Is that right?' This tells them you are actually listening.",tip:"Accurate reflection is a profound gift."},
+{t:'Do not minimize or compare',d:"'At least' and 'I know someone who' are exits from their experience, not bridges to it.",tip:"Comparison and minimizing, even well-intentioned, are isolating."},
+{t:'Follow up',d:"A text a few days later — 'I've been thinking about you. How are you doing?' — matters enormously.",tip:"Follow-up is where real friendship lives."}],
+say:[{s:"'I'm here. You don't have to be okay. What do you need?'",d:"'At least you have [x]. Things could be so much worse.'"},{s:"'I've been thinking about what you shared. How are you doing today?'",d:"'Let me know if you need anything.' [never follows up]"}],
+watch:['Your own discomfort with their pain is driving the fix impulse — sit with your own discomfort first','Friend is in genuine crisis (safety risk) — being there includes actively helping them get professional support'],
+reflect:['When have you been in pain and someone was truly there for you? What did they do?','What makes it hard for you to just be present without trying to fix things?'],
+check:['I asked what kind of support they needed before assuming','I reflected back what I was hearing','I did not minimize compare or silver-lining it','I followed up in the days after','I helped them access more support if they needed it']},
+'adults':{
+steps:[{t:'Resist the fix impulse',d:"Your first job is not to solve anything. Your first job is to be with them in it. Sit with the discomfort of not being able to make it better.",tip:"Presence, not solutions."},
+{t:'Ask before you offer',d:"'What do you need from me right now? Do you want to be heard, or do you want help thinking through options?' Then do the thing they asked for.",tip:"Never assume which kind of support is needed."},
+{t:'Reflect back',d:"Name what you are hearing: 'It sounds like you're feeling [emotion]. Is that right?' This tells them you are actually listening.",tip:"Accurate reflection is a profound gift."},
+{t:'Do not minimize or compare',d:"'At least' and 'I know someone who' are exits from their experience, not bridges to it. Stay with them — in their specific situation.",tip:"Comparison and minimizing, even well-intentioned, are isolating."},
+{t:'Follow up',d:"A text a few days later — 'I've been thinking about you. How are you doing?' — matters enormously.",tip:"Follow-up is where real friendship lives."}],
+say:[{s:"'I'm here. You don't have to be okay. What do you need?'",d:"'At least you have [x]. Things could be so much worse.'"},{s:"'I've been thinking about what you shared with me. How are you doing today?'",d:"'Let me know if you need anything.' [never follows up]"}],
+watch:['Your own discomfort with their pain is driving the fix impulse — sit with your own discomfort first','Friend is in genuine crisis (safety risk) — being there includes actively helping them get professional support'],
+reflect:['When have you been in pain and someone was truly there for you? What did they do?','What makes it hard for you to just be present without trying to fix things?'],
+check:['I asked what kind of support they needed before assuming','I reflected back what I was hearing','I did not minimize compare or silver-lining it','I followed up in the days after','I helped them access more support if they needed it']}}},
+];
+
+// ─── STATE ──────────────────────────────────────────────
+let cur = null;
+const AGE_BANDS = [
+  {key:'3-6',   label:'Ages 3–6',    short:'3–6'},
+  {key:'7-12',  label:'Ages 7–12',   short:'7–12'},
+  {key:'13-17', label:'Ages 13–17',  short:'13–17'},
+  {key:'adults',label:'Adults',      short:'Adults'},
+];
+
+// ─── SIDEBAR ────────────────────────────────────────────
+function buildSidebar(convs) {
+  const el = document.getElementById('sblist');
+  el.innerHTML = '';
+  const cats = [...new Set(convs.map(c => c.cat))];
+  cats.forEach(cat => {
+    const items = convs.filter(c => c.cat === cat);
+    if (!items.length) return;
+    const lbl = document.createElement('div');
+    lbl.className = 'cat-lbl'; lbl.textContent = cat;
+    el.appendChild(lbl);
+    items.forEach(c => {
+      const d = document.createElement('div');
+      d.className = 'sitem' + (cur && cur.id === c.id ? ' on' : '');
+      // Show which age bands are available
+      const bands = AGE_BANDS.filter(b => c.ages[b.key]).map(b => b.short).join(' · ');
+      d.innerHTML = `<span class="sitem-icon">${c.icon}</span>
+        <span class="sitem-text">
+          <span class="sitem-title">${c.title}</span>
+          <span class="sitem-sub">${bands}</span>
+        </span>`;
+      d.onclick = () => openGuide(c);
+      el.appendChild(d);
+    });
+  });
+  if (!el.children.length) {
+    el.innerHTML = '<div class="norec">No results found.</div>';
+  }
+}
+
+function filterList(q) {
+  const lower = q.toLowerCase();
+  const filtered = CONVS.filter(c =>
+    c.title.toLowerCase().includes(lower) ||
+    c.cat.toLowerCase().includes(lower) ||
+    c.skill.toLowerCase().includes(lower)
+  );
+  buildSidebar(filtered);
+}
+
+// ─── WELCOME ─────────────────────────────────────────────
+function showWelcome() {
+  document.getElementById('content').innerHTML = `
+  <div class="welcome">
+    <div class="w-hero">
+      <div class="w-ey">Communication · Empathy · Growth</div>
+      <div class="w-title">The conversations<br>that matter <em>most</em></div>
+      <div class="w-desc">Pick any topic. Then choose the age group that fits — every guide adapts its language, examples, and approach to where you actually are in life.</div>
+      <div class="w-stats">
+        <div class="w-stat"><div class="w-stat-v">${CONVS.length}</div><div class="w-stat-l">Topics</div></div>
+        <div class="w-stat"><div class="w-stat-v">4</div><div class="w-stat-l">Age groups</div></div>
+        <div class="w-stat"><div class="w-stat-v">10</div><div class="w-stat-l">Skills taught</div></div>
+      </div>
+    </div>
+    <div class="w-how">
+      <div class="w-how-title">How it works</div>
+      <div class="w-how-steps">
+        <div class="w-how-step"><div class="w-how-num">1</div><span>Pick a conversation topic from the left sidebar</span></div>
+        <div class="w-how-step"><div class="w-how-num">2</div><span>Choose the age tab that fits — Ages 3–6, 7–12, 13–17, or Adults</span></div>
+        <div class="w-how-step"><div class="w-how-num">3</div><span>Read the step-by-step guide and see what to say vs. what to avoid</span></div>
+        <div class="w-how-step"><div class="w-how-num">4</div><span>Reflect and use the self-check to see how the conversation went</span></div>
+      </div>
+    </div>
+    <button class="w-cta" onclick="openGuide(CONVS[0])">Start with the first topic →</button>
+  </div>`;
+}
+
+// ─── OPEN GUIDE ──────────────────────────────────────────
+function openGuide(c) {
+  cur = c;
+  buildSidebar(CONVS); // refresh sidebar active state
+
+  // Figure out which bands this topic has
+  const availBands = AGE_BANDS.filter(b => c.ages[b.key]);
+  const firstBand = availBands[0];
+
+  let html = `<div class="guide">
+    <div class="g-bc">
+      <span onclick="showWelcome()" style="cursor:pointer;text-decoration:underline">Home</span>
+      <span>›</span><span>${c.cat}</span><span>›</span><span>${c.title}</span>
+    </div>
+    <div class="g-title">${c.title}</div>
+    <div class="g-tags">
+      <span class="g-tag cat">📂 ${c.cat}</span>
+      <span class="g-tag skill">✦ ${c.skill}</span>
+    </div>
+    <div class="g-intro">${c.intro}</div>`;
+
+  // Age band tabs
+  if (availBands.length > 1) {
+    html += `<div class="age-tabs">`;
+    availBands.forEach((b, i) => {
+      html += `<button class="age-tab${i === 0 ? ' on' : ''}" onclick="switchBand(this, '${c.id}', '${b.key}')">
+        ${b.short}<span class="age-tab-label">${b.label}</span>
+      </button>`;
+    });
+    html += `</div>`;
+  }
+
+  // Render each band's content (only first visible)
+  availBands.forEach((b, i) => {
+    html += `<div class="band-content" id="band-${c.id}-${b.key}" style="display:${i === 0 ? 'block' : 'none'}">`;
+    html += renderContent(c.ages[b.key], c.id + b.key);
+    html += `</div>`;
+  });
+
+  html += `</div>`;
+  document.getElementById('content').innerHTML = html;
+  document.getElementById('main').scrollTo(0, 0);
+}
+
+function switchBand(btn, cid, bandKey) {
+  // Update tab active state
+  btn.closest('.age-tabs').querySelectorAll('.age-tab').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  // Show correct content
+  document.querySelectorAll(`[id^="band-${cid}-"]`).forEach(el => el.style.display = 'none');
+  const target = document.getElementById(`band-${cid}-${bandKey}`);
+  if (target) target.style.display = 'block';
+}
+
+function renderContent(age, uid) {
+  let html = '';
+
+  // Steps
+  if (age.steps && age.steps.length) {
+    html += `<div class="g-sec"><div class="g-sec-lbl">Step by step</div><div class="steps">`;
+    age.steps.forEach((s, i) => {
+      html += `<div class="step">
+        <div class="step-n">${i + 1}</div>
+        <div class="step-body">
+          <div class="step-t">${s.t}</div>
+          <div class="step-d">${s.d}</div>
+          ${s.tip ? `<div class="step-tip">💡 ${s.tip}</div>` : ''}
+        </div>
+      </div>`;
+    });
+    html += `</div></div>`;
+  }
+
+  // Scripts
+  if (age.say && age.say.length) {
+    html += `<div class="g-sec"><div class="g-sec-lbl">What to say — and what to avoid</div><div class="scripts">`;
+    age.say.forEach(p => {
+      html += `<div class="spair">
+        <div class="sbox say">
+          <div class="s-lbl sy">✓ Try saying this</div>
+          <div class="s-txt">${p.s}</div>
+        </div>
+        <div class="sbox dont">
+          <div class="s-lbl dn">✗ Instead of this</div>
+          <div class="s-txt">${p.d}</div>
+        </div>
+      </div>`;
+    });
+    html += `</div></div>`;
+  }
+
+  // Watch for
+  if (age.watch && age.watch.length) {
+    html += `<div class="g-sec"><div class="g-sec-lbl">What to watch for</div><div class="wlist">`;
+    age.watch.forEach(w => {
+      html += `<div class="wi"><span style="flex-shrink:0">👁️</span><span>${w}</span></div>`;
+    });
+    html += `</div></div>`;
+  }
+
+  // Reflection
+  if (age.reflect && age.reflect.length) {
+    html += `<div class="ref-card">
+      <div class="ref-title">Reflection prompts</div>
+      <div class="ref-qs">`;
+    age.reflect.forEach(r => {
+      html += `<div class="ref-q">${r}</div>`;
+    });
+    html += `</div></div>`;
+  }
+
+  // Self-check
+  if (age.check && age.check.length) {
+    const id = 'ck' + uid;
+    html += `<div class="ck-card">
+      <div class="ck-title">Self-check</div>
+      <div class="ck-sub">After the conversation, tick what you actually did:</div>
+      <div class="ck-list" id="${id}">`;
+    age.check.forEach((c, i) => {
+      html += `<div class="ci" id="${id}-${i}" onclick="toggleCk('${id}-${i}','${id}')">
+        <div class="ci-box" id="${id}-${i}-box"></div>
+        <div class="ci-txt">${c}</div>
+      </div>`;
+    });
+    html += `</div>
+      <div class="sc-result" id="${id}-res"></div>
+    </div>`;
+  }
+
+  return html;
+}
+
+function toggleCk(itemId, listId) {
+  const item = document.getElementById(itemId);
+  const box = document.getElementById(itemId + '-box');
+  const checked = item.classList.contains('chk');
+  if (checked) {
+    item.classList.remove('chk');
+    box.textContent = '';
+  } else {
+    item.classList.add('chk');
+    box.textContent = '✓';
+  }
+  const list = document.getElementById(listId);
+  const items = list.querySelectorAll('.ci');
+  const total = items.length;
+  const done = [...items].filter(el => el.classList.contains('chk')).length;
+  const res = document.getElementById(listId + '-res');
+  if (done === 0) { res.className = 'sc-result'; return; }
+  res.className = 'sc-result show';
+  const pct = done / total;
+  if (pct === 1) {
+    res.className = 'sc-result show good';
+    res.textContent = '✦ You showed up fully for this conversation. That takes real courage and skill.';
+  } else if (pct >= 0.6) {
+    res.className = 'sc-result show ok';
+    res.textContent = `You did ${done} of ${total}. Solid effort — notice what you missed and try it next time.`;
+  } else {
+    res.className = 'sc-result show low';
+    res.textContent = `You did ${done} of ${total}. This is where growth starts. Pick one thing to try differently next time.`;
+  }
+}
+
+// ─── BOOT ────────────────────────────────────────────────
+buildSidebar(CONVS);
+showWelcome();
+</script>
+</body>
+</html>
