@@ -9,7 +9,6 @@ Wavelength is a growing series of communication tools and education, built on on
 The series also treats AI-literacy as a communication skill in its own right. As AI becomes part of how people write, message, and create, learning to recognize when it's present — in a text, an email, a kid's homework, a company's marketing — is becoming just as important as knowing how to say something kindly. That matters for individuals and companies alike, at every age.
 
 **Current tools in the series:**
-- 🌊 **Wavelength** — real-time help simplifying confusing messages, finding the right words, and sparking stalled conversations
 - 📖 **The Conversation Guide** — 70 structured guides for hard conversations, from early childhood through adulthood
 - 🖐️⚙️ **Human or AI?** — a game that teaches AI-literacy by testing (and humbling) your instincts for spotting AI-written text
 
