@@ -1,3 +1,4 @@
+![Uploading conversation_guide_poster.png…]()
 # 📖 The Conversation Guide
 
 *How to have the conversations that matter most. Part of the Wavelength Series.*
