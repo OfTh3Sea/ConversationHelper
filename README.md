@@ -1,4 +1,4 @@
-![Uploading conversation_guide_poster.png…]()
+<img width="4440" height="2360" alt="conversation_guide_poster" src="https://github.com/user-attachments/assets/5fd0ee7e-15e8-4af6-88d3-3839b20fdac9" />
 # 📖 The Conversation Guide
 
 *How to have the conversations that matter most. Part of the Wavelength Series.*
